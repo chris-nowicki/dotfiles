@@ -25,11 +25,12 @@ git clone https://github.com/chris-nowicki/dotfiles.git ~/.dotfiles
 # investigate install scripts and bootstrapping tools.
 
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.zsh/starship.zsh ~/.zsh/starship.zsh
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/starship/starship.toml ~/.config/starship.toml
+ln -s ~/.dotfiles/.config/starship.toml ~/.config/starship.toml
 ```
 
-4. Install Homebrew, followed by the software listed in the Brewfile.
+1. Install Homebrew, followed by the software listed in the Brewfile.
 
 ```zsh
 # These could also be in an install script.

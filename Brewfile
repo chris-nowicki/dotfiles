@@ -9,12 +9,12 @@ brew "bash"
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
-# Monitor a directory for changes and run a shell command
-brew "fswatch"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
@@ -35,8 +35,6 @@ brew "tree-sitter"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# 📦🚀 Fast, disk space efficient package manager
-brew "pnpm"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Cross-shell prompt for astronauts
@@ -45,8 +43,6 @@ brew "starship"
 brew "tree"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Fish-like fast/unobtrusive autosuggestions for zsh
-brew "zsh-autosuggestions"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
 # Password manager that keeps all passwords secure behind one password
@@ -77,8 +73,6 @@ cask "google-chrome"
 cask "inkdrop"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-# Create, manage and debug system- and user services
-cask "launchcontrol"
 # Minimal browser that protects privacy
 cask "min"
 # Calculator and converter application
