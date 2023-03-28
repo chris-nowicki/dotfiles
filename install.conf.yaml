@@ -10,7 +10,6 @@
     ~/.zsh/starship.zsh: ./.zsh/starship.zsh
     ~/.config/starship.toml: ./.config/starship.toml
 
-
 - create:
     - ~/Developer
 
