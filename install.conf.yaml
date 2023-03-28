@@ -5,11 +5,14 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: zshrc
-    ~/.gitconfig: gitconfig
+    ~/.gitconfig:
+    ~/.zshrc:
+    ~/.zsh/starship.zsh: ./.zsh/starship.zsh
+    ~/.config/starship.toml: ./.config/starship.toml
+
 
 - create:
     - ~/Developer
 
-# - shell:
-#   - [git submodule update --init --recursive, Installing submodules]
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
