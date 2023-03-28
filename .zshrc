@@ -4,9 +4,9 @@
 alias ls='ls -lAFh'
 
 # Functions
-# mkcd () {
-#   mkdir -p "$@" && cd "$_"
-# }
+mkcd () {
+  mkdir -p "$@" && cd "$_"
+}
 
 # Load Starship
 eval "$(starship init zsh)"
