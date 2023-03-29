@@ -12,6 +12,8 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Aliases
 alias ls='exa -laFh --git'
 alias exa='exa -laFh --git'
+alias bbd="brew bundle dump --force --describe"
+alias bnq="python3 args.py"
 
 # Functions
 function mkcd () {
