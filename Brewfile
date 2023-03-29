@@ -1,11 +1,8 @@
-# Taps
 tap "dart-lang/dart"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "sass/sass"
-
-# Brews (Packages)
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -38,6 +35,8 @@ brew "gnu-which"
 brew "httpie"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Mac App Store command-line interface
+brew "mas"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -54,8 +53,6 @@ brew "tree"
 brew "zsh"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
-
-# Casks (Applications)
 # Password manager that keeps all passwords secure behind one password
 cask "1password", args: { no_quarantine: true }
 # Command-line helper for the 1Password password manager
@@ -70,7 +67,7 @@ cask "bartender", args: { no_quarantine: true }
 cask "cleanmymac", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
-# Cloud storage software
+# Client for the Dropbox cloud storage service
 cask "dropbox", args: { no_quarantine: true }
 # Calendar software
 cask "fantastical", args: { no_quarantine: true }
@@ -80,6 +77,8 @@ cask "firefox", args: { no_quarantine: true }
 cask "gemini", args: { no_quarantine: true }
 # Desktop client for GitHub repositories
 cask "github", args: { no_quarantine: true }
+# Git client focusing on productivity
+cask "gitkraken", args: { no_quarantine: true }
 # Web browser
 cask "google-chrome", args: { no_quarantine: true }
 # Markdown editor
