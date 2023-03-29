@@ -11,7 +11,8 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Aliases
-alias ls='ls -lAFh'
+alias ls='exa -laFh --git'
+alias exa='exa -laFh --git'
 
 # Functions
 mkcd () {
