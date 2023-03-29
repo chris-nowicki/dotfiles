@@ -14,10 +14,13 @@ alias ls='exa -laFh --git'
 alias exa='exa -laFh --git'
 
 # Functions
-mkcd () {
+function mkcd () {
   mkdir -p "$@" && cd "$_"
+}
+
+function exists() {
+  command -v $1 >/dev/null 2>&1
 }
 
 # Load Starship
 eval "$(starship init zsh)"
-

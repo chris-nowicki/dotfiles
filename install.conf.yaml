@@ -1,6 +1,7 @@
 - defaults:
     link:
         relink: true
+        create: true
     shell:
         stdout: true
         stderr: true
@@ -10,17 +11,16 @@
 - link:
     ~/.gitconfig:
     ~/.zshrc:
+    ~/.zshenv:
     ~/.zsh/starship.zsh: ./.zsh/starship.zsh
     ~/.config/starship.toml: ./config/starship.toml
     ~/.config/bat:
-        create: true
         path: config/bat
 - create:
     - ~/Developer
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    # -
-    #     command: ./setup_homebrew.zsh
-    #     stdin: true
-
+    -
+        command: ./setup_homebrew.zsh
+        stdin: true
