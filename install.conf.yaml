@@ -1,6 +1,9 @@
 - defaults:
     link:
-      relink: true
+        relink: true
+    shell:
+        stdout: true
+        stderr: true
 
 - clean: ['~']
 
@@ -14,4 +17,8 @@
     - ~/Developer
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
+    -
+        command: ./setup_homebrew.zsh
+        stdin: true
+

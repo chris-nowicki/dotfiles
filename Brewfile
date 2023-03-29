@@ -1,16 +1,23 @@
+# Taps
 tap "dart-lang/dart"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "sass/sass"
+
+# Brews (Packages)
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
+# Modern replacement for 'ls'
+brew "exa"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Collection of GNU find, xargs, and locate
@@ -27,6 +34,8 @@ brew "gnu-sed"
 brew "gnu-tar"
 # GNU implementation of which utility
 brew "gnu-which"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Parser generator tool and incremental parsing library
@@ -45,6 +54,8 @@ brew "tree"
 brew "zsh"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
+
+# Casks (Applications)
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line helper for the 1Password password manager
@@ -59,6 +70,8 @@ cask "bartender"
 cask "cleanmymac"
 # Voice and text chat software
 cask "discord"
+# Cloud storage software
+cask "dropbox"
 # Calendar software
 cask "fantastical"
 # Web browser
