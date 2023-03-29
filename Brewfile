@@ -57,52 +57,52 @@ brew "sass/sass/sass"
 
 # Casks (Applications)
 # Password manager that keeps all passwords secure behind one password
-cask "1password"
+cask "1password", args: { no_quarantine: true }
 # Command-line helper for the 1Password password manager
-cask "1password-cli"
+cask "1password-cli", args: { no_quarantine: true }
 # Application launcher and productivity software
-cask "alfred"
+cask "alfred", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
-cask "alt-tab"
+cask "alt-tab", args: { no_quarantine: true }
 # Menu bar icon organizer
-cask "bartender"
+cask "bartender", args: { no_quarantine: true }
 # Tool to remove unnecessary files and folders from disk
-cask "cleanmymac"
+cask "cleanmymac", args: { no_quarantine: true }
 # Voice and text chat software
-cask "discord"
+cask "discord", args: { no_quarantine: true }
 # Cloud storage software
-cask "dropbox"
+cask "dropbox", args: { no_quarantine: true }
 # Calendar software
-cask "fantastical"
+cask "fantastical", args: { no_quarantine: true }
 # Web browser
-cask "firefox"
+cask "firefox", args: { no_quarantine: true }
 # Disk space cleaner that finds and deletes duplicated and similar files
-cask "gemini"
+cask "gemini", args: { no_quarantine: true }
 # Desktop client for GitHub repositories
-cask "github"
+cask "github", args: { no_quarantine: true }
 # Web browser
-cask "google-chrome"
+cask "google-chrome", args: { no_quarantine: true }
 # Markdown editor
-cask "inkdrop"
+cask "inkdrop", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
+cask "iterm2", args: { no_quarantine: true }
 # Minimal browser that protects privacy
-cask "min"
+cask "min", args: { no_quarantine: true }
 # Calculator and converter application
-cask "numi"
+cask "numi", args: { no_quarantine: true }
 # All system and utility switches in one place
-cask "one-switch"
+cask "one-switch", args: { no_quarantine: true }
 # Collaboration platform for API development
-cask "postman"
+cask "postman", args: { no_quarantine: true }
 # All-in-one bookmark manager
-cask "raindropio"
+cask "raindropio", args: { no_quarantine: true }
 # Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle"
+cask "rectangle", args: { no_quarantine: true }
 # Music streaming service
-cask "spotify"
+cask "spotify", args: { no_quarantine: true }
 # Open-source code editor
-cask "visual-studio-code"
+cask "visual-studio-code", args: { no_quarantine: true }
 # Mind mapping and brainstorming tool
-cask "xmind"
+cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
-cask "zoom"
+cask "zoom", args: { no_quarantine: true }
