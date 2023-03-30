@@ -55,8 +55,6 @@ brew "starship"
 brew "tree"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Real-time type-ahead completion for Zsh
-brew "zsh-autocomplete"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
 # Password manager that keeps all passwords secure behind one password
