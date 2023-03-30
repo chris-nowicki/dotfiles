@@ -8,19 +8,20 @@
 
 - clean: ['~']
 
-- link:
-    ~/.gitconfig:
-    ~/.zshrc:
-    ~/.zshenv:
-    ~/.zsh/starship.zsh: ./.zsh/starship.zsh
-    ~/.config/starship.toml: ./config/starship.toml
-    ~/.config/bat:
-        path: config/bat
 - create:
     - ~/Developer
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     -
-        command: ./setup_homebrew.zsh
+        command: ./brew/setup_homebrew.zsh
         stdin: true
+
+- link:
+    ~/.gitconfig: ./git/gitconfig
+    ~/.zshrc: ./zsh/zshrc
+    ~/.zshenv: ./zsh/zshenv
+    ~/.zsh/starship.zsh: ./zsh/starship/starship.zsh
+    ~/.config/starship.toml: ./zsh/starship/starship.toml
+    ~/.config/bat:
+        path: config/bat

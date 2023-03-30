@@ -1,5 +1,3 @@
-echo 'Hello from .zshenv'
-
   # Check for the existence of the passed-in command but discard the outcome
   # through redirection whether successful or erroneous because our
   # script will use the exit code.
