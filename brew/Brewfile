@@ -35,8 +35,12 @@ brew "gnu-which"
 brew "httpie"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Pager program similar to more
+brew "less"
 # Mac App Store command-line interface
 brew "mas"
+# Free (GNU) replacement for the Pico text editor
+brew "nano"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -105,3 +109,16 @@ cask "visual-studio-code", args: { no_quarantine: true }
 cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
 cask "zoom", args: { no_quarantine: true }
+mas "1Password for Safari", id: 1569813296
+mas "Day One", id: 1055511498
+mas "GoodNotes", id: 1444383602
+mas "MindNode", id: 1289197285
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Save to Raindrop.io", id: 1549370672
+mas "Speedtest", id: 1153157709
+mas "Things", id: 904280696
+mas "Twitter", id: 1482454543
+mas "Ultra Character Map", id: 520265986
+mas "Yubico Authenticator", id: 1497506650
