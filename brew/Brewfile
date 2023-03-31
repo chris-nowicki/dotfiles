@@ -71,10 +71,6 @@ cask "bartender", args: { no_quarantine: true }
 cask "cleanmymac", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
-# Client for the Dropbox cloud storage service
-cask "dropbox", args: { no_quarantine: true }
-# Calendar software
-cask "fantastical", args: { no_quarantine: true }
 # Web browser
 cask "firefox", args: { no_quarantine: true }
 # Disk space cleaner that finds and deletes duplicated and similar files
@@ -112,7 +108,6 @@ cask "zoom", args: { no_quarantine: true }
 mas "1Password for Safari", id: 1569813296
 mas "Day One", id: 1055511498
 mas "GoodNotes", id: 1444383602
-mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
