@@ -1,5 +1,7 @@
 # Chris Nowicki's Dot Files
 
+I'm learning a ton about [dotfiles, command line use, Homebrew, zsh, git, macOS and more with the course ***Dotfiles from Start to Finish-ish***](http://dotfiles.eieio.xyz/) by [@EIEIOxyz](https://twitter.com/EIEIOxyz/), and you can too!
+
 ## Steps to bootstrap a new Mac
 
 1. Install Apple's Command Line Tools, which are prerequisites for Git and Homebrew.
@@ -54,3 +56,4 @@ cd ~/.dotfiles && brew bundle
 - [ ] Create a [bootable USB installer for macOS](https://support.apple.com/en-us/HT201372).
 - [ ] Integrate other cloud services into your Dotfiles process (Dropbox, Google Drive, etc.).
 - [ ] Find inspiration and examples in other Dotfiles repositories at [dotfiles.github.io](https://dotfiles.github.io/).
+- [ ] Share this repo with a million people.
