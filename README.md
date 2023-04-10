@@ -19,7 +19,10 @@ git clone https://github.com/chris-nowicki/dotfiles.git ~/.dotfiles
 ```
 3. run the dotbot install script to install home brew, Brewfiles, App Store Apps, and configure MacOS settings.
 ```zsh
+# change to the hidden dotfiles directory
 cd ~/.dotfiles
+
+# run the dotbot install script
 ./install
 ```
 
