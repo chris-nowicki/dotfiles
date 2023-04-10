@@ -22,6 +22,10 @@ else
   echo "## brew does not exist, continuing with install...\n"
   # install the homebrew application
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # add homebrew to the path
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(whoami)/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 echo "## installing/updating brews & casks\n"
