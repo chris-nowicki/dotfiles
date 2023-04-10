@@ -17,40 +17,18 @@ git clone git@github.com:chris-nowicki/dotfiles.git ~/.dotfiles
 # ...or use HTTPS and switch remotes later.
 git clone https://github.com/chris-nowicki/dotfiles.git ~/.dotfiles
 ```
-
-3. Create symlinks in the Home directory to the real files in the repo.
-
+3. run the dotbot install script to install home brew, Brewfiles, App Store Apps, and configure MacOS settings.
 ```zsh
-# There are better and less manual ways to do this;
-# investigate install scripts and bootstrapping tools.
-
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.zsh/starship.zsh ~/.zsh/starship.zsh
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.config/starship.toml ~/.config/starship.toml
-```
-
-1. Install Homebrew, followed by the software listed in the Brewfile.
-
-```zsh
-# These could also be in an install script.
-
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Then pass in the Brewfile location...
-brew bundle --file ~/.dotfiles/Brewfile
-
-# ...or move to the directory first.
-cd ~/.dotfiles && brew bundle
+cd ~/.dotfiles
+./install
 ```
 
 ## TODO List
 
-- [ ] Learn how to use [`defaults`](https://macos-defaults.com/#%F0%9F%99%8B-what-s-a-defaults-command) to record and restore System Preferences and other macOS configurations.
-- [ ] Organize these growing steps into multiple script files.
-- [ ] Automate symlinking and run script files with a bootstrapping tool like [Dotbot](https://github.com/anishathalye/dotbot).
+- [X] Learn how to use [`defaults`](https://macos-defaults.com/#%F0%9F%99%8B-what-s-a-defaults-command) to record and restore System Preferences and other macOS configurations.
+- [X] Organize these growing steps into multiple script files.
+- [X] Automate symlinking and run script files with a bootstrapping tool like [Dotbot](https://github.com/anishathalye/dotbot).
 - [ ] Make a checklist of steps to decommission your computer before wiping your hard drive.
 - [ ] Create a [bootable USB installer for macOS](https://support.apple.com/en-us/HT201372).
-- [ ] Integrate other cloud services into your Dotfiles process (Dropbox, Google Drive, etc.).
+- [X] Integrate other cloud services into your Dotfiles process (Dropbox, Google Drive, etc.).
 - [ ] Find inspiration and examples in other Dotfiles repositories at [dotfiles.github.io](https://dotfiles.github.io/).
