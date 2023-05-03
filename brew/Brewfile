@@ -1,6 +1,7 @@
 tap "dart-lang/dart"
-tap "homebrew/bundle"
-tap "homebrew/cask"
+tap "hom*** Brewfile Generated ***
+
+cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "sass/sass"
@@ -38,12 +39,16 @@ brew "tree-sitter"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
+# Manage multiple Node.js versions
+brew "nvm"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line interface for Vercel
+brew "vercel-cli"
 # JavaScript package manager
 brew "yarn"
 # UNIX shell (command interpreter)
@@ -76,10 +81,8 @@ cask "font-hack-nerd-font", args: { no_quarantine: true }
 cask "gemini", args: { no_quarantine: true }
 # Git client focusing on productivity
 cask "gitkraken", args: { no_quarantine: true }
-# Web browser
-cask "google-chrome", args: { no_quarantine: true }
-# Markdown editor
-cask "inkdrop", args: { no_quarantine: true }
+# Terminal built on web technologies
+cask "hyper", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2", args: { no_quarantine: true }
 # Minimal browser that protects privacy
