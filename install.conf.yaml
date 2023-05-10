@@ -30,3 +30,5 @@
     ~/.hyper.js: ./hyper/hyper.js
     ~/.hyper_plugins/local/dracula-pro:
       path: hyper/dracula-pro
+    ~/.hyper_plugins/local/hyper-opacity:
+      path: hyper/hyper-opacity

@@ -4,7 +4,7 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
 	config: {
-		opacity: 0.3,
+		opacity: 0.85,
 		// choose either `'stable'` for receiving highly polished,
 		// or `'canary'` for less polished but more frequent updates
 		updateChannel: 'stable',
@@ -126,7 +126,7 @@ module.exports = {
 	// in development, you can create a directory under
 	// `~/.hyper_plugins/local/` and include it here
 	// to load it and avoid it being `npm install`ed
-	localPlugins: ['dracula-pro'],
+	localPlugins: ['dracula-pro', 'hyper-opacity'],
 	keymaps: {
 		// Example
 		// 'window:devtools': 'cmd+alt+o',
