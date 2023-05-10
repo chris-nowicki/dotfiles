@@ -1,22 +1,23 @@
 - defaults:
     link:
-        relink: true
-        create: true
+      relink: true
+      create: true
     shell:
-        stdout: true
-        stderr: true
+      stdout: true
+      stderr: true
 
 - clean: ['~']
 
 - create:
     - ~/Developer
     - ~/.nvm
+    - ~/.hyper_plugins/local
 
 - shell:
-    -   [git submodule update --init --recursive, Installing submodules]
-    -   command: ./brew/setup_homebrew.zsh
-        stdin: true
-    -   command: ./macos/setup_macos.zsh
+    - [git submodule update --init --recursive, Installing submodules]
+    - command: ./brew/setup_homebrew.zsh
+      stdin: true
+    - command: ./macos/setup_macos.zsh
 
 - link:
     ~/.gitconfig: ./git/gitconfig
@@ -25,5 +26,7 @@
     ~/.zsh/starship.zsh: ./zsh/starship/starship.zsh
     ~/.config/starship.toml: ./zsh/starship/starship.toml
     ~/.config/bat:
-        path: config/bat
+      path: config/bat
     ~/.hyper.js: ./hyper/hyper.js
+    ~/.hyper_plugins/local/dracula-pro:
+      path: hyper/dracula-pro

@@ -1,7 +1,6 @@
 tap "dart-lang/dart"
-tap "hom*** Brewfile Generated ***
-
-cask"
+tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "sass/sass"
@@ -63,12 +62,18 @@ cask "1password-cli", args: { no_quarantine: true }
 cask "alfred", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
+# Multi-track audio editor and recorder
+cask "audacity", args: { no_quarantine: true }
 # Menu bar icon organizer
 cask "bartender", args: { no_quarantine: true }
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac", args: { no_quarantine: true }
+# Utilities designed to make common development tasks easier
+cask "devtoys", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
+# Reimagine your terminal
+cask "fig", args: { no_quarantine: true }
 # Web browser
 cask "firefox", args: { no_quarantine: true }
 # Developer targeted fonts with a high number of glyphs
@@ -109,6 +114,7 @@ cask "xmind", args: { no_quarantine: true }
 cask "zoom", args: { no_quarantine: true }
 mas "1Password for Safari", id: 1569813296
 mas "Day One", id: 1055511498
+mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
