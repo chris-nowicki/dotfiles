@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "sass/sass"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
@@ -72,6 +73,8 @@ cask "cleanmymac", args: { no_quarantine: true }
 cask "devtoys", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
+# Client for the Dropbox cloud storage service
+cask "dropbox", args: { no_quarantine: true }
 # Reimagine your terminal
 cask "fig", args: { no_quarantine: true }
 # Web browser
@@ -92,6 +95,8 @@ cask "hyper", args: { no_quarantine: true }
 cask "iterm2", args: { no_quarantine: true }
 # Minimal browser that protects privacy
 cask "min", args: { no_quarantine: true }
+# App to write, plan, collaborate, and get organized
+cask "notion", args: { no_quarantine: true }
 # Calculator and converter application
 cask "numi", args: { no_quarantine: true }
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -125,3 +130,55 @@ mas "Things", id: 904280696
 mas "Twitter", id: 1482454543
 mas "Ultra Character Map", id: 520265986
 mas "Yubico Authenticator", id: 1497506650
+vscode "aaron-bond.better-comments"
+vscode "akamud.vscode-theme-onedark"
+vscode "astro-build.astro-vscode"
+vscode "BeardedBear.beardedtheme"
+vscode "bradlc.vscode-tailwindcss"
+vscode "bungcip.better-toml"
+vscode "christian-kohler.npm-intellisense"
+vscode "codezombiech.gitignore"
+vscode "csstools.postcss"
+vscode "donjayamanne.githistory"
+vscode "dracula-theme-pro.theme-dracula-pro"
+vscode "dracula-theme.theme-dracula"
+vscode "dsznajder.es7-react-js-snippets"
+vscode "ecmel.vscode-html-css"
+vscode "esbenp.prettier-vscode"
+vscode "formulahendry.auto-close-tag"
+vscode "formulahendry.auto-rename-tag"
+vscode "formulahendry.code-runner"
+vscode "GitHub.copilot"
+vscode "glenn2223.live-sass"
+vscode "infeng.vscode-react-typescript"
+vscode "mgmcdermott.vscode-language-babel"
+vscode "michelemelluso.code-beautifier"
+vscode "mrmlnc.vscode-scss"
+vscode "ms-dotnettools.csharp"
+vscode "ms-python.isort"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-vscode.js-debug-nightly"
+vscode "ms-vscode.vscode-typescript-next"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "oderwat.indent-rainbow"
+vscode "PKief.material-icon-theme"
+vscode "Prisma.prisma"
+vscode "ritwickdey.LiveServer"
+vscode "RobbOwen.synthwave-vscode"
+vscode "rust-lang.rust-analyzer"
+vscode "sanity-io.vscode-sanity"
+vscode "shakram02.bash-beautify"
+vscode "sibiraj-s.vscode-scss-formatter"
+vscode "sidthesloth.html5-boilerplate"
+vscode "standard.vscode-standard"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "Swimm.swimm"
+vscode "syler.sass-indented"
+vscode "tombonnike.vscode-status-bar-format-toggle"
+vscode "vunguyentuan.vscode-postcss"
+vscode "wholroyd.jinja"
+vscode "withfig.fig"
+vscode "xabikos.JavaScriptSnippets"
+vscode "yoavbls.pretty-ts-errors"
+vscode "yzhang.markdown-all-in-one"
