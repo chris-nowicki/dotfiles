@@ -4,7 +4,7 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
 	config: {
-		opacity: 0.85,
+		opacity: 1,
 		// choose either `'stable'` for receiving highly polished,
 		// or `'canary'` for less polished but more frequent updates
 		updateChannel: 'stable',
@@ -21,18 +21,18 @@ module.exports = {
 		// letter spacing as a relative unit
 		letterSpacing: 0,
 		// terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-		cursorColor: 'rgba(248,28,229,0.8)',
+		cursorColor: 'rgba(255,128,191,0.8)',
 		// terminal text color under BLOCK cursor
 		cursorAccentColor: '#000',
 		// `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-		cursorShape: 'BLOCK',
+		cursorShape: 'UNDERLINE',
 		// set to `true` (without backticks and without quotes) for blinking cursor
-		cursorBlink: false,
+		cursorBlink: true,
 		// color of the text
-		foregroundColor: '#fff',
+		foregroundColor: '#F8F8F2',
 		// terminal background color
 		// opacity is only supported on macOS
-		backgroundColor: '#000',
+		backgroundColor: '#22212C',
 		// terminal selection color
 		selectionColor: 'rgba(248,28,229,0.3)',
 		// border color (window, tabs)
@@ -126,7 +126,7 @@ module.exports = {
 	// in development, you can create a directory under
 	// `~/.hyper_plugins/local/` and include it here
 	// to load it and avoid it being `npm install`ed
-	localPlugins: ['dracula-pro', 'hyper-opacity'],
+	localPlugins: ['hyper-opacity'],
 	keymaps: {
 		// Example
 		// 'window:devtools': 'cmd+alt+o',
