@@ -9,6 +9,8 @@ tap "sass/sass"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Defines a standard way of committing rules and communicating it
+brew "commitizen"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
@@ -93,8 +95,6 @@ cask "gitkraken", args: { no_quarantine: true }
 cask "hyper", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2", args: { no_quarantine: true }
-# Minimal browser that protects privacy
-cask "min", args: { no_quarantine: true }
 # App to write, plan, collaborate, and get organized
 cask "notion", args: { no_quarantine: true }
 # Calculator and converter application
@@ -109,6 +109,8 @@ cask "postman", args: { no_quarantine: true }
 cask "raindropio", args: { no_quarantine: true }
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle", args: { no_quarantine: true }
+# Team communication and collaboration software
+cask "slack", args: { no_quarantine: true }
 # Music streaming service
 cask "spotify", args: { no_quarantine: true }
 # Open-source code editor
@@ -119,7 +121,6 @@ cask "xmind", args: { no_quarantine: true }
 cask "zoom", args: { no_quarantine: true }
 mas "1Password for Safari", id: 1569813296
 mas "Day One", id: 1055511498
-mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
