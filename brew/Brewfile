@@ -75,8 +75,6 @@ cask "cleanmymac", args: { no_quarantine: true }
 cask "devtoys", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
-# Client for the Dropbox cloud storage service
-cask "dropbox", args: { no_quarantine: true }
 # Reimagine your terminal
 cask "fig", args: { no_quarantine: true }
 # Web browser
