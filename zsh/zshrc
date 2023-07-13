@@ -1,5 +1,6 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # Add Locations to $PATH Variable
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -16,6 +17,9 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # Functions
 [[ -f ~/.dotfiles/zsh/functions.zsh ]] && source ~/.dotfiles/zsh/functions.zsh
+
+# Exa Colors
+[[ -f ~/.dotfiles/zsh/exa/exa_colors.zshrc ]] && source ~/.dotfiles/zsh/exa/exa_colors.zshrc
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
