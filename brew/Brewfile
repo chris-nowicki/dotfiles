@@ -1,8 +1,6 @@
 tap "dart-lang/dart"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "sass/sass"
 # Bourne-Again SHell, a UNIX command interpreter
