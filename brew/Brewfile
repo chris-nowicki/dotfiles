@@ -9,14 +9,10 @@ tap "sass/sass"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Defines a standard way of committing rules and communicating it
-brew "commitizen"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Modern replacement for 'ls'
 brew "exa"
 # Command-line tool to interact with exercism.io
@@ -37,8 +33,6 @@ brew "mas"
 brew "nano"
 # Parser generator tool and incremental parsing library
 brew "tree-sitter"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
@@ -65,8 +59,6 @@ cask "1password-cli", args: { no_quarantine: true }
 cask "alfred", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
-# Multi-track audio editor and recorder
-cask "audacity", args: { no_quarantine: true }
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher", args: { no_quarantine: true }
 # Menu bar icon organizer
@@ -77,8 +69,6 @@ cask "cleanmymac", args: { no_quarantine: true }
 cask "devtoys", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
-# Client for the Dropbox cloud storage service
-cask "dropbox", args: { no_quarantine: true }
 # Reimagine your terminal
 cask "fig", args: { no_quarantine: true }
 # Web browser
@@ -89,10 +79,6 @@ cask "font-fira-code-nerd-font", args: { no_quarantine: true }
 cask "font-fira-mono-nerd-font", args: { no_quarantine: true }
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font", args: { no_quarantine: true }
-# Disk space cleaner that finds and deletes duplicated and similar files
-cask "gemini", args: { no_quarantine: true }
-# Git client focusing on productivity
-cask "gitkraken", args: { no_quarantine: true }
 # Terminal built on web technologies
 cask "hyper", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
@@ -124,7 +110,6 @@ cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
 cask "zoom", args: { no_quarantine: true }
 mas "1Password for Safari", id: 1569813296
-mas "Bear", id: 1091189122
 mas "Day One", id: 1055511498
 mas "GoodNotes", id: 1444383602
 mas "Numbers", id: 409203825
