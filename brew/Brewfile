@@ -53,8 +53,6 @@ brew "zsh-autocomplete"
 brew "sass/sass/sass"
 # Command-line helper for the 1Password password manager
 cask "1password-cli", args: { no_quarantine: true }
-# Application launcher and productivity software
-cask "alfred", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
 # Tool to flash OS images to SD cards & USB drives
@@ -81,8 +79,6 @@ cask "font-hack-nerd-font", args: { no_quarantine: true }
 cask "hyper", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2", args: { no_quarantine: true }
-# App to write, plan, collaborate, and get organized
-cask "notion", args: { no_quarantine: true }
 # Calculator and converter application
 cask "numi", args: { no_quarantine: true }
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -95,8 +91,6 @@ cask "postman", args: { no_quarantine: true }
 cask "raindropio", args: { no_quarantine: true }
 # Control your tools with a few keystrokes
 cask "raycast", args: { no_quarantine: true }
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle", args: { no_quarantine: true }
 # Team communication and collaboration software
 cask "slack", args: { no_quarantine: true }
 # Music streaming service
