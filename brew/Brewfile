@@ -29,8 +29,6 @@ brew "less"
 brew "mas"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
-# Parser generator tool and incremental parsing library
-brew "tree-sitter"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
@@ -41,6 +39,8 @@ brew "python@3.10"
 brew "starship"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool and incremental parsing library
+brew "tree-sitter"
 # Command-line interface for Vercel
 brew "vercel-cli"
 # JavaScript package manager
@@ -51,10 +51,12 @@ brew "zsh"
 brew "zsh-autocomplete"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
-# Command-line helper for the 1Password password manager
+# Command-line interface for 1Password
 cask "1password-cli", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
+# Multi-track audio editor and recorder
+cask "audacity", args: { no_quarantine: true }
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher", args: { no_quarantine: true }
 # Menu bar icon organizer
@@ -65,6 +67,8 @@ cask "cleanmymac", args: { no_quarantine: true }
 cask "devtoys", args: { no_quarantine: true }
 # Voice and text chat software
 cask "discord", args: { no_quarantine: true }
+# Client for the Dropbox cloud storage service
+cask "dropbox", args: { no_quarantine: true }
 # Reimagine your terminal
 cask "fig", args: { no_quarantine: true }
 # Web browser
@@ -75,6 +79,10 @@ cask "font-fira-code-nerd-font", args: { no_quarantine: true }
 cask "font-fira-mono-nerd-font", args: { no_quarantine: true }
 # Developer targeted fonts with a high number of glyphs
 cask "font-hack-nerd-font", args: { no_quarantine: true }
+# Disk space cleaner that finds and deletes duplicated and similar files
+cask "gemini", args: { no_quarantine: true }
+# Git client focusing on productivity
+cask "gitkraken", args: { no_quarantine: true }
 # Terminal built on web technologies
 cask "hyper", args: { no_quarantine: true }
 # Terminal emulator as alternative to Apple's Terminal app
@@ -91,6 +99,8 @@ cask "postman", args: { no_quarantine: true }
 cask "raindropio", args: { no_quarantine: true }
 # Control your tools with a few keystrokes
 cask "raycast", args: { no_quarantine: true }
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle", args: { no_quarantine: true }
 # Team communication and collaboration software
 cask "slack", args: { no_quarantine: true }
 # Music streaming service
@@ -101,18 +111,6 @@ cask "visual-studio-code", args: { no_quarantine: true }
 cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
 cask "zoom", args: { no_quarantine: true }
-mas "1Password for Safari", id: 1569813296
-mas "Day One", id: 1055511498
-mas "GoodNotes", id: 1444383602
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
-mas "Save to Raindrop.io", id: 1549370672
-mas "Speedtest", id: 1153157709
-mas "Things", id: 904280696
-mas "Twitter", id: 1482454543
-mas "Ultra Character Map", id: 520265986
-mas "Yubico Authenticator", id: 1497506650
 vscode "aaron-bond.better-comments"
 vscode "akamud.vscode-theme-onedark"
 vscode "astro-build.astro-vscode"
@@ -132,12 +130,15 @@ vscode "formulahendry.auto-close-tag"
 vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
 vscode "GitHub.copilot"
+vscode "GitHub.copilot-chat"
 vscode "glenn2223.live-sass"
 vscode "infeng.vscode-react-typescript"
 vscode "mgmcdermott.vscode-language-babel"
 vscode "michelemelluso.code-beautifier"
 vscode "mrmlnc.vscode-scss"
+vscode "ms-azuretools.vscode-docker"
 vscode "ms-dotnettools.csharp"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
@@ -152,13 +153,16 @@ vscode "RobbOwen.synthwave-vscode"
 vscode "rust-lang.rust-analyzer"
 vscode "sanity-io.vscode-sanity"
 vscode "shakram02.bash-beautify"
+vscode "sharat.vscode-brewfile"
 vscode "sibiraj-s.vscode-scss-formatter"
 vscode "sidthesloth.html5-boilerplate"
 vscode "standard.vscode-standard"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "Swimm.swimm"
 vscode "syler.sass-indented"
+vscode "tamasfe.even-better-toml"
 vscode "tombonnike.vscode-status-bar-format-toggle"
+vscode "unifiedjs.vscode-mdx"
 vscode "vunguyentuan.vscode-postcss"
 vscode "wholroyd.jinja"
 vscode "withfig.fig"
