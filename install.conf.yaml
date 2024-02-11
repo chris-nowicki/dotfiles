@@ -11,7 +11,6 @@
 - create:
     - ~/Developer
     - ~/.nvm
-    - ~/.hyper_plugins/local
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -23,12 +22,6 @@
     ~/.gitconfig: ./git/gitconfig
     ~/.zshrc: ./zsh/zshrc
     ~/.zshenv: ./zsh/zshenv
-    ~/.zsh/starship.zsh: ./zsh/starship/starship.zsh
-    ~/.config/starship.toml: ./zsh/starship/starship.toml
+    ~/.oh-my-zsh/themes/dracula.zsh-theme: ./zsh/themes/dracula/dracula.zsh-theme
     ~/.config/bat:
       path: config/bat
-    ~/.hyper.js: ./hyper/hyper.js
-    ~/.hyper_plugins/local/dracula-pro:
-      path: hyper/dracula-pro
-    ~/.hyper_plugins/local/hyper-opacity:
-      path: hyper/hyper-opacity

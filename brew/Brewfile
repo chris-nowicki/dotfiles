@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "sass/sass"
+tap "supabase/tap"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -29,6 +30,10 @@ brew "less"
 brew "mas"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
+# Parser generator tool and incremental parsing library
+brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
 # Manage multiple Node.js versions
@@ -37,10 +42,10 @@ brew "nvm"
 brew "python@3.10"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Parser generator tool and incremental parsing library
-brew "tree-sitter"
 # Command-line interface for Vercel
 brew "vercel-cli"
 # JavaScript package manager
@@ -51,12 +56,12 @@ brew "zsh"
 brew "zsh-autocomplete"
 # Stylesheet Preprocessor
 brew "sass/sass/sass"
+# Supabase CLI
+brew "supabase/tap/supabase"
 # Command-line interface for 1Password
 cask "1password-cli", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
-# Multi-track audio editor and recorder
-cask "audacity", args: { no_quarantine: true }
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher", args: { no_quarantine: true }
 # Menu bar icon organizer
@@ -91,22 +96,20 @@ cask "iterm2", args: { no_quarantine: true }
 cask "numi", args: { no_quarantine: true }
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian", args: { no_quarantine: true }
-# All system and utility switches in one place
-cask "one-switch", args: { no_quarantine: true }
 # Collaboration platform for API development
 cask "postman", args: { no_quarantine: true }
 # All-in-one bookmark manager
 cask "raindropio", args: { no_quarantine: true }
 # Control your tools with a few keystrokes
 cask "raycast", args: { no_quarantine: true }
-# Move and resize windows using keyboard shortcuts or snap areas
-cask "rectangle", args: { no_quarantine: true }
 # Team communication and collaboration software
 cask "slack", args: { no_quarantine: true }
 # Music streaming service
 cask "spotify", args: { no_quarantine: true }
 # Open-source code editor
 cask "visual-studio-code", args: { no_quarantine: true }
+# Rust-based terminal
+cask "warp", args: { no_quarantine: true }
 # Mind mapping and brainstorming tool
 cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
@@ -114,12 +117,13 @@ cask "zoom", args: { no_quarantine: true }
 vscode "aaron-bond.better-comments"
 vscode "akamud.vscode-theme-onedark"
 vscode "astro-build.astro-vscode"
-vscode "BeardedBear.beardedtheme"
+vscode "beardedbear.beardedtheme"
 vscode "bradlc.vscode-tailwindcss"
 vscode "bungcip.better-toml"
 vscode "christian-kohler.npm-intellisense"
 vscode "codezombiech.gitignore"
 vscode "csstools.postcss"
+vscode "denoland.vscode-deno"
 vscode "donjayamanne.githistory"
 vscode "dracula-theme-pro.theme-dracula-pro"
 vscode "dracula-theme.theme-dracula"
@@ -129,16 +133,18 @@ vscode "esbenp.prettier-vscode"
 vscode "formulahendry.auto-close-tag"
 vscode "formulahendry.auto-rename-tag"
 vscode "formulahendry.code-runner"
-vscode "GitHub.copilot"
-vscode "GitHub.copilot-chat"
+vscode "github.copilot"
+vscode "github.copilot-chat"
 vscode "glenn2223.live-sass"
 vscode "infeng.vscode-react-typescript"
+vscode "jock.svg"
 vscode "mgmcdermott.vscode-language-babel"
 vscode "michelemelluso.code-beautifier"
 vscode "mrmlnc.vscode-scss"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-dotnettools.csharp"
 vscode "ms-dotnettools.vscode-dotnet-runtime"
+vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
@@ -146,10 +152,10 @@ vscode "ms-vscode.js-debug-nightly"
 vscode "ms-vscode.vscode-typescript-next"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "oderwat.indent-rainbow"
-vscode "PKief.material-icon-theme"
-vscode "Prisma.prisma"
-vscode "ritwickdey.LiveServer"
-vscode "RobbOwen.synthwave-vscode"
+vscode "pkief.material-icon-theme"
+vscode "prisma.prisma"
+vscode "ritwickdey.liveserver"
+vscode "robbowen.synthwave-vscode"
 vscode "rust-lang.rust-analyzer"
 vscode "sanity-io.vscode-sanity"
 vscode "shakram02.bash-beautify"
@@ -158,7 +164,7 @@ vscode "sibiraj-s.vscode-scss-formatter"
 vscode "sidthesloth.html5-boilerplate"
 vscode "standard.vscode-standard"
 vscode "streetsidesoftware.code-spell-checker"
-vscode "Swimm.swimm"
+vscode "swimm.swimm"
 vscode "syler.sass-indented"
 vscode "tamasfe.even-better-toml"
 vscode "tombonnike.vscode-status-bar-format-toggle"
@@ -166,6 +172,6 @@ vscode "unifiedjs.vscode-mdx"
 vscode "vunguyentuan.vscode-postcss"
 vscode "wholroyd.jinja"
 vscode "withfig.fig"
-vscode "xabikos.JavaScriptSnippets"
+vscode "xabikos.javascriptsnippets"
 vscode "yoavbls.pretty-ts-errors"
 vscode "yzhang.markdown-all-in-one"
