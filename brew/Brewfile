@@ -18,6 +18,8 @@ brew "exa"
 brew "exercism"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Distributed revision control system
 brew "git"
 # GNU implementation of which utility
@@ -44,6 +46,8 @@ brew "tmux"
 brew "tree"
 # Command-line interface for Vercel
 brew "vercel-cli"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
 # Real-time type-ahead completion for Zsh
@@ -96,6 +100,20 @@ cask "visual-studio-code", args: { no_quarantine: true }
 cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
 cask "zoom", args: { no_quarantine: true }
+mas "1Password for Safari", id: 1569813296
+mas "Day One", id: 1055511498
+mas "Final Cut Pro", id: 424389933
+mas "Hand Mirror", id: 1502839586
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Privacy.com for Safari", id: 6449850851
+mas "Save to Raindrop.io", id: 1549370672
+mas "Speedtest", id: 1153157709
+mas "Things", id: 904280696
+mas "Ultra Character Map", id: 520265986
+mas "Yubico Authenticator", id: 1497506650
 vscode "aaron-bond.better-comments"
 vscode "akamud.vscode-theme-onedark"
 vscode "astro-build.astro-vscode"
