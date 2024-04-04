@@ -5,10 +5,5 @@
 	defaultBranch = main
 [alias]
 	add-commit = !git add -A && git commit
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [push]
 autoSetupRemote = true

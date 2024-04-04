@@ -4,46 +4,26 @@ tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "sass/sass"
 tap "supabase/tap"
+# Platform built on V8 to build network applications
+brew "node"
+# Command-line tool for Appwrite
+brew "appwrite"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Clone of cat(1) with syntax highlighting and Git integration
-brew "bat"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Modern replacement for 'ls'
 brew "exa"
-# Command-line tool to interact with exercism.io
-brew "exercism"
-# Collection of GNU find, xargs, and locate
-brew "findutils"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # Distributed revision control system
 brew "git"
-# GNU implementation of which utility
-brew "gnu-which"
-# User-friendly cURL replacement (command-line HTTP client)
-brew "httpie"
-# Pager program similar to more
-brew "less"
 # Mac App Store command-line interface
 brew "mas"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
-# Parser generator tool and incremental parsing library
-brew "tree-sitter"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
-# Terminal multiplexer
-brew "tmux"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Command-line interface for Vercel
 brew "vercel-cli"
 # Shell extension to navigate your filesystem faster
@@ -52,16 +32,10 @@ brew "zoxide"
 brew "zsh"
 # Real-time type-ahead completion for Zsh
 brew "zsh-autocomplete"
-# Stylesheet Preprocessor
-brew "sass/sass/sass"
-# Supabase CLI
-brew "supabase/tap/supabase"
 # Command-line interface for 1Password
 cask "1password-cli", args: { no_quarantine: true }
 # Enable Windows-like alt-tab
 cask "alt-tab", args: { no_quarantine: true }
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher", args: { no_quarantine: true }
 # Menu bar icon organiser
 cask "bartender", args: { no_quarantine: true }
 # Tool to remove unnecessary files and folders from disk
@@ -96,35 +70,25 @@ cask "slack", args: { no_quarantine: true }
 cask "spotify", args: { no_quarantine: true }
 # Open-source code editor
 cask "visual-studio-code", args: { no_quarantine: true }
-# Mind mapping and brainstorming tool
-cask "xmind", args: { no_quarantine: true }
 # Video communication and virtual meeting platform
 cask "zoom", args: { no_quarantine: true }
 mas "1Password for Safari", id: 1569813296
-mas "Day One", id: 1055511498
 mas "Final Cut Pro", id: 424389933
 mas "Hand Mirror", id: 1502839586
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
-mas "Privacy.com for Safari", id: 6449850851
-mas "Save to Raindrop.io", id: 1549370672
 mas "Speedtest", id: 1153157709
 mas "Things", id: 904280696
 mas "Ultra Character Map", id: 520265986
 mas "Yubico Authenticator", id: 1497506650
 vscode "aaron-bond.better-comments"
-vscode "akamud.vscode-theme-onedark"
 vscode "astro-build.astro-vscode"
-vscode "beardedbear.beardedtheme"
 vscode "bradlc.vscode-tailwindcss"
-vscode "bungcip.better-toml"
 vscode "christian-kohler.npm-intellisense"
-vscode "codezombiech.gitignore"
 vscode "csstools.postcss"
-vscode "denoland.vscode-deno"
-vscode "donjayamanne.githistory"
+vscode "dbaeumer.vscode-eslint"
 vscode "dracula-theme-pro.theme-dracula-pro"
 vscode "dracula-theme.theme-dracula"
 vscode "dsznajder.es7-react-js-snippets"
@@ -136,42 +100,32 @@ vscode "formulahendry.code-runner"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "glenn2223.live-sass"
-vscode "infeng.vscode-react-typescript"
+vscode "gruntfuggly.todo-tree"
 vscode "jock.svg"
 vscode "mgmcdermott.vscode-language-babel"
 vscode "michelemelluso.code-beautifier"
-vscode "mrmlnc.vscode-scss"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-python.debugpy"
 vscode "ms-python.isort"
 vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-vscode.js-debug-nightly"
 vscode "ms-vscode.vscode-typescript-next"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "oderwat.indent-rainbow"
 vscode "pkief.material-icon-theme"
 vscode "prisma.prisma"
 vscode "ritwickdey.liveserver"
-vscode "robbowen.synthwave-vscode"
-vscode "rust-lang.rust-analyzer"
 vscode "sanity-io.vscode-sanity"
 vscode "shakram02.bash-beautify"
 vscode "sharat.vscode-brewfile"
+vscode "shd101wyy.markdown-preview-enhanced"
 vscode "sibiraj-s.vscode-scss-formatter"
 vscode "sidthesloth.html5-boilerplate"
-vscode "standard.vscode-standard"
 vscode "streetsidesoftware.code-spell-checker"
-vscode "swimm.swimm"
 vscode "syler.sass-indented"
 vscode "tamasfe.even-better-toml"
-vscode "tombonnike.vscode-status-bar-format-toggle"
 vscode "unifiedjs.vscode-mdx"
 vscode "vunguyentuan.vscode-postcss"
-vscode "wholroyd.jinja"
-vscode "withfig.fig"
 vscode "xabikos.javascriptsnippets"
+vscode "xyc.vscode-mdx-preview"
 vscode "yoavbls.pretty-ts-errors"
 vscode "yzhang.markdown-all-in-one"

@@ -9,14 +9,13 @@
 - clean: ['~']
 
 - create:
-    - ~/Developer
+    - ~/dev
     - ~/.nvm
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - command: ./brew/setup_homebrew.zsh
       stdin: true
-    - command: ./macos/setup_macos.zsh
 
 - link:
     ~/.gitconfig: ./git/gitconfig
