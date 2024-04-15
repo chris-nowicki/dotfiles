@@ -1,7 +1,7 @@
 # Chris Nowicki's Dot Files
 
 ## Prerequisites
-> [!CAUTION]
+> [!IMPORTANT]
 > Follow steps to setup a new mac [here](https://github.com/chris-nowicki/mac-setup) before continuing to install dotfiles below.
 
 ## Steps to install dotfiles
