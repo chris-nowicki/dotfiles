@@ -1,5 +1,6 @@
 # Custom Dictionary Words
 astro
+bootable
 codesnap
 doctoc
 dont
@@ -7,6 +8,8 @@ dotfiles
 esbenp
 Fira
 ncurc
+nowicki
+Nowicki's
 Setapp
 Sonoma
 tailwindcss
