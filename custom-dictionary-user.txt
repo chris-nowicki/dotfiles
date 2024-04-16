@@ -1,0 +1,13 @@
+# Custom Dictionary Words
+astro
+codesnap
+doctoc
+dont
+dotfiles
+esbenp
+Fira
+ncurc
+Setapp
+Sonoma
+tailwindcss
+vsicons
