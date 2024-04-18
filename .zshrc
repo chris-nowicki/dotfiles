@@ -4,7 +4,7 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 
-plugins=(git)
+plugins=(git zoxide)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,6 +29,3 @@ alias gac='git add-commit -m'
 alias gpsh='git push'
 alias gss='git status -s'
 alias gs='echo ""; echo "*********************************************"; echo -e "   DO NOT FORGET TO PULL BEFORE COMMITTING"; echo "*********************************************"; echo ""; git status'
-
-# Zoxide
-eval "$(zoxide init zsh)"
