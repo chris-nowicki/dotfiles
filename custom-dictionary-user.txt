@@ -15,11 +15,13 @@ Bebas
 bgdark
 Blogpost
 bootable
+bradgarropy
 Brewfiles
 chrisnowicki
 cleanshot
 cloudinary
 clsx
+codesandbox
 codesnap
 colour
 Combobox
@@ -102,6 +104,7 @@ Roadmap
 roboto
 Setapp
 shadcn
+shiki
 signup
 Sonoma
 Speedtest
