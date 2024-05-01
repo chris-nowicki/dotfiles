@@ -20,6 +20,7 @@ Brewfiles
 chrisnowicki
 cleanshot
 cloudinary
+Cloudlifter
 clsx
 codesandbox
 codesnap
@@ -31,10 +32,12 @@ Coppinger
 cruseo
 darklight
 ddetibihn
+dealsfordevs
 Decentraleyes
 devfinder
 devjobs
 devkits
+Devs
 DEVTO
 displaylink
 docsify
@@ -42,6 +45,7 @@ doctoc
 dont
 Dotbot
 dotfiles
+Elgato
 embla
 EMDR
 esbenp
@@ -51,10 +55,12 @@ factoral
 Fira
 fkey
 flowbite
+Focusrite
 fontsource
 framelib
 frontmatter
 groq
+Grovemade
 handraise
 HASHNODE
 headlessui
@@ -69,13 +75,17 @@ Jost
 Kalam
 keepingyouawake
 keka
+Keychron
 kumbh
 kysely
 labelledby
+Lacie
 livesite
 lucide
+MERN
 Meslo
 middlewares
+Mirrorless
 Modebutton
 Monokai
 ncurc
@@ -89,6 +99,7 @@ nosniff
 Nowicki
 nums
 Octocat
+OMOTON
 openoutline
 Pixelmator
 Placholder
@@ -102,6 +113,8 @@ rehype
 Resumé
 Roadmap
 roboto
+RØDE
+Scarlett
 Setapp
 shadcn
 shiki
@@ -116,6 +129,7 @@ swiper
 Tabliss
 tailwindcss
 thisismypassword
+Trackpad
 transitioners
 Transpiles
 trpc
@@ -130,6 +144,7 @@ velite
 vercel
 vsicons
 webfonts
+Xata
 xlink
 Yubico
 zipcodeapi
