@@ -87,6 +87,7 @@ Meslo
 middlewares
 Mirrorless
 Modebutton
+monitorcontrol
 Monokai
 ncurc
 Neue
@@ -129,6 +130,7 @@ swiper
 Tabliss
 tailwindcss
 thisismypassword
+tldr
 Trackpad
 transitioners
 Transpiles
@@ -148,4 +150,5 @@ Xata
 xlink
 Yubico
 zipcodeapi
+zoxide
 ZSMU
