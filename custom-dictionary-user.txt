@@ -52,6 +52,7 @@ esbenp
 Evro
 exercism
 factoral
+Fallon
 Fira
 fkey
 flowbite
@@ -68,6 +69,8 @@ heroicons
 hiddenbar
 hookform
 iamwix
+Iapi
+immer
 iterm
 itsycal
 jiti
@@ -147,8 +150,11 @@ vercel
 vsicons
 webfonts
 Xata
+xdescribe
 xlink
+xtest
 Yubico
 zipcodeapi
 zoxide
 ZSMU
+zustand

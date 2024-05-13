@@ -5,7 +5,9 @@ CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 export HOMEBREW_NO_ENV_HINTS=1
 
-plugins=(git zoxide)
+autoload -U compinit; compinit
+
+plugins=(git zoxide fzf)
 
 source $ZSH/oh-my-zsh.sh
 
