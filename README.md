@@ -1,12 +1,19 @@
-# Chris Nowicki's Dot Files
+# My Dot Files
+
+This directory contains the dotfiles for my system
 
 ## Prerequisites
 > [!IMPORTANT]
 > Follow steps to setup a new mac [here](https://github.com/chris-nowicki/mac-setup) before continuing to install dotfiles below.
 
-## Steps to install dotfiles
+### Stow
+```sh
+brew install stow
+```
 
-1. Clone repo into new directory:
+## Installation
+
+1. Clone repo:
 
 ```zsh
 # Use SSH (if set up)...
@@ -16,14 +23,14 @@ git clone git@github.com:chris-nowicki/dotfiles.git ~/Dotfiles
 git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
 ```
 
-2. run the `config.sh` script:
+2. Use **GNU** stow to create symlinks:
 
 ```zsh
-# change to the hidden dotfiles directory
+# Change to the Dotfiles directory
 cd ~/Dotfiles
 
-# run the dotbot install script
-./config.sh
+# run the GNU script
+stow .
 ```
 
 ## TODO List
