@@ -16,7 +16,7 @@ brew install stow
 
 ## Installation
 
-### lone repo:
+### Clone repo:
 
 ```zsh
 # Use SSH (if set up)...
