@@ -7,13 +7,16 @@ This directory contains the dotfiles for my system
 > Follow steps to setup a new mac [here](https://github.com/chris-nowicki/mac-setup) before continuing to install dotfiles below.
 
 ### Stow
+
+Ensure **GNU STOW** is installed
+
 ```sh
 brew install stow
 ```
 
 ## Installation
 
-1. Clone repo:
+### lone repo:
 
 ```zsh
 # Use SSH (if set up)...
@@ -23,7 +26,7 @@ git clone git@github.com:chris-nowicki/dotfiles.git ~/Dotfiles
 git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
 ```
 
-2. Use **GNU** stow to create symlinks:
+### Use **GNU** stow to create symlinks:
 
 ```zsh
 # Change to the Dotfiles directory
