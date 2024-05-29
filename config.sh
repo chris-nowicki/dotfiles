@@ -4,7 +4,7 @@ DOTFILES=(.bash_profile .gitconfig .gitignore .zshrc .hushlogin)
 
 for dotfile in $(echo ${DOTFILES[*]});
 do
-    cp -f ~/Dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
+    ln -s -f ~/Dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
 done
 
 # Link custom dictionary to cspell
