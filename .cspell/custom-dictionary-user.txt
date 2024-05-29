@@ -3,6 +3,7 @@ Adblocker
 ADHD
 agba
 Agbalumo
+Alacritty
 appewrite
 appwrite
 astro
@@ -17,6 +18,7 @@ Blogpost
 bootable
 bradgarropy
 Brewfiles
+Buttonless
 chrisnowicki
 cleanshot
 cloudinary
@@ -111,6 +113,7 @@ Placholder
 planetscale
 pomodoro
 portabletext
+powerlevel
 precss
 preinstall
 raycast
