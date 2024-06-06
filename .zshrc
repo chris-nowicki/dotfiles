@@ -40,6 +40,9 @@ zinit snippet OMZP::command-not-found
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward

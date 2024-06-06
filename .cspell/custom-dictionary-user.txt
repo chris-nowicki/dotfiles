@@ -31,6 +31,7 @@ Combobox
 commitlint
 contentlayer
 Coppinger
+crossorigin
 cruseo
 darklight
 ddetibihn
@@ -70,6 +71,7 @@ headlessui
 heroicons
 hiddenbar
 hookform
+housinglocation
 iamwix
 Iapi
 immer
@@ -151,6 +153,7 @@ unsynced
 Upvotes
 usehooks
 usertoken
+uuidv
 velite
 vercel
 vsicons
