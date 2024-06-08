@@ -115,6 +115,7 @@ Placholder
 planetscale
 pomodoro
 portabletext
+posthog
 powerlevel
 precss
 preinstall
