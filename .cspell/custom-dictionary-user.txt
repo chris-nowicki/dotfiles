@@ -29,6 +29,7 @@ codesnap
 colour
 Combobox
 commitlint
+cond
 contentlayer
 Coppinger
 crossorigin
@@ -74,6 +75,7 @@ hookform
 housinglocation
 iamwix
 Iapi
+iife
 immer
 INFL
 iterm
@@ -113,6 +115,7 @@ openoutline
 Pixelmator
 Placholder
 planetscale
+plusplus
 pomodoro
 portabletext
 posthog
