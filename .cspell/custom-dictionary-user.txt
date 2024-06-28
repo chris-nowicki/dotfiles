@@ -20,6 +20,7 @@ bradgarropy
 Brewfiles
 Buttonless
 chrisnowicki
+chriswix
 cleanshot
 cloudinary
 Cloudlifter
@@ -100,6 +101,7 @@ Modebutton
 monitorcontrol
 Monokai
 ncurc
+neofetch
 Neue
 Neurodivervisity
 neurofeedback
