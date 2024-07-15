@@ -3,6 +3,7 @@
 This directory contains the dotfiles for my system
 
 ## Prerequisites
+
 > [!IMPORTANT]
 > Follow steps to setup a new mac [here](https://github.com/chris-nowicki/mac-setup) before continuing to install dotfiles below.
 
@@ -32,8 +33,8 @@ git clone --recurse-submodules  https://github.com/chris-nowicki/dotfiles.git ~/
 # Change to the Dotfiles directory
 cd ~/Dotfiles
 
-# run the GNU script
-stow .
+# run the Install script
+./install.sh
 ```
 
 ## TODO List
