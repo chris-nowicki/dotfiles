@@ -10,9 +10,10 @@ done
 # check for .hushlogin file and if it does not exist, create it
 echo "Checking for .hushlogin file..."
 
-if [ ! -f ~/.hushlogin ]; then
+# check if hushlogin exists in the root direcotry and if it does not exist, create it
+if [ ! -f "$HOME/.hushlogin" ]; then
   echo "Creating .hushlogin file..."
-  touch ~/.hushlogin
+  touch "$HOME/.hushlogin"
 fi
 
 echo "Done!"
