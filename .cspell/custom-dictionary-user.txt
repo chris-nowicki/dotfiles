@@ -70,6 +70,7 @@ Grovemade
 handraise
 HASHNODE
 headlessui
+Helsing
 heroicons
 hiddenbar
 hookform
@@ -137,6 +138,7 @@ shiki
 signup
 Sonoma
 Speedtest
+stylesheet
 supabase
 svgs
 swiffy
