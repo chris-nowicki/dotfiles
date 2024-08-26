@@ -17,6 +17,13 @@ blur = false
 
 option_as_alt = "Both"
 
+[cursor]
+blink_interval = 750
+
+[cursor.style]
+shape = "Beam"
+blinking = "Always"
+
 [font]
 normal.family = "MesloLGS Nerd Font Mono"
 

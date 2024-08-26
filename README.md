@@ -21,10 +21,10 @@ brew install stow
 
 ```zsh
 # Use SSH (if set up)...
-git clone --recurse-submodules  git@github.com:chris-nowicki/dotfiles.git ~/Dotfiles
+git clone git@github.com:chris-nowicki/dotfiles.git ~/Dotfiles
 
 # ...or use HTTPS and switch remotes later.
-git clone --recurse-submodules  https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
+git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
 ```
 
 ### Use **GNU** stow to create symlinks:
