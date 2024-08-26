@@ -64,15 +64,16 @@ eval $(thefuck --alias fk)
 CASE_SENSITIVE="true"
 export HOMEBREW_NO_ENV_HINTS=1
 
+
 # -------
 # Aliases
 # -------
 alias c="clear"
 alias cd="z"
-alias cm="npx cz"
-alias l="ls" # List files in current directory
-alias ll="ls -al --color" # List all files in current directory in long list format
-alias ls='ls --color'
+alias cm="npx cz" List files in current directory
+alias ll="eza -l --git --header --git-ignore --icons=always"
+alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git""
+alias ls='eza --icons=always'
 alias o="open ." # Open the current directory in Finder
 alias reload-zsh="source ~/.zshrc"
 
