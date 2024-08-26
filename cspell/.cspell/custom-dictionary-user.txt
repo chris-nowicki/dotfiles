@@ -148,6 +148,7 @@ swiper
 Tabliss
 tailwindcss
 testid
+thefuck
 thisismypassword
 tldr
 Trackpad
