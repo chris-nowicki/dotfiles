@@ -1,6 +1,7 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ------------------
+# Powerlevel10k
+# ------------------
+# Enable Powerlevel10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -10,28 +11,35 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Set the directory we want to store zinit and plugins
+# ------------------
+# Zinit Setup
+# ------------------
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Download Zinit, if it's not there yet
+# Download Zinit if not present
 if [ ! -d "$ZINIT_HOME" ]; then
   mkdir -p "$(dirname $ZINIT_HOME)"
   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+# ------------------
+# Plugins
+# ------------------
+zinit wait lucid for \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-autosuggestions \
+  Aloxaf/fzf-tab
 
-# Load completions
-autoload -Uz compinit && compinit
+# NVM setup
+export NVM_LAZY_LOAD=true
+zinit light lukechilds/zsh-nvm
 
-# History
+# ------------------
+# History Configuration
+# ------------------
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -44,45 +52,52 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# completion using arrow keys (based on history)
+# ------------------
+# Key Bindings
+# ------------------
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-# NVM setup
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Shell integrations
+# ------------------
+# Shell Integrations
+# ------------------
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
-# -----------------
+# ------------------
 # Environment Variables
-# -----------------
+# ------------------
 CASE_SENSITIVE="true"
 export HOMEBREW_NO_ENV_HINTS=1
 
-
-# -------
+# ------------------
 # Aliases
-# -------
+# ------------------
+# General
 alias c="clear"
 alias cd="z"
-alias cm="npx cz" List files in current directory
+alias cm="npx cz"
 alias ll="eza -l --git --header --git-ignore --icons=always"
 alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git""
 alias ls='eza --icons=always'
-alias o="open ." # Open the current directory in Finder
+alias o="open ."
 alias reload-zsh="source ~/.zshrc"
 
-# ----------------------
-# Git Aliases
-# ----------------------
+# Git
 alias gaa='git add .'
 alias gcm='git commit -m'
 alias gac='git add-commit -m'
 alias gp='git push'
 alias gss='git status -s'
 alias gs='echo ""; echo "*********************************************"; echo -e "   DO NOT FORGET TO PULL BEFORE COMMITTING"; echo "*********************************************"; echo ""; git status'
+
+# ------------------
+# Completions
+# ------------------
+function deferred_compinit() {
+  autoload -Uz compinit && compinit
+}
+
+precmd_functions+=( deferred_compinit )
