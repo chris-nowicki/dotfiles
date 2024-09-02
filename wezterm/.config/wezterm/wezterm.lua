@@ -10,9 +10,9 @@ config = {
   window_background_opacity = .9,
   macos_window_background_blur = 10,
   window_padding = {
-    left = '12px',
-    right = '12px',
-    top = '12px',
+    left = '24px',
+    right = 0,
+    top = '20px',
     bottom = 0,
   },
   initial_rows = 30,
