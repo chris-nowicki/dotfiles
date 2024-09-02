@@ -101,6 +101,3 @@ function deferred_compinit() {
 }
 
 precmd_functions+=( deferred_compinit )
-
-# To customize prompt, run `p10k configure` or edit ~/Dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/Dotfiles/zsh/.p10k.zsh ]] || source ~/Dotfiles/zsh/.p10k.zsh
