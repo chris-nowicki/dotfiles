@@ -63,8 +63,6 @@ bindkey '^[[B' history-search-forward
 # ------------------
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
 
 # ------------------
 # Environment Variables
