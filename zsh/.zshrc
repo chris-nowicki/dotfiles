@@ -73,6 +73,11 @@ export HOMEBREW_NO_ENV_HINTS=1
 # ------------------
 # Aliases
 # ------------------
+# Folder Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # General
 alias c="clear"
 alias cd="z"
@@ -80,8 +85,10 @@ alias cm="npx cz"
 alias ll="eza -l --git --header --git-ignore --icons=always"
 alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git""
 alias ls='eza --icons=always'
+alias nv='nvim'
 alias o="open ."
-alias reload-zsh="source ~/.zshrc"
+alias rz="source ~/.zshrc"
+alias zconf="nvim ~/Dotfiles/zsh/.zshrc"
 
 # Git
 alias gaa='git add .'
