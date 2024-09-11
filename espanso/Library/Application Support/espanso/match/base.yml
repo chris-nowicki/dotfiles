@@ -1,0 +1,51 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+
+# NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+matches:
+  # PERSONAL
+  # EMAIL - PERSONAL
+  - trigger: ":pe"
+    replace: "cnowicki@gmail.com"
+
+  # EMAIL - WORK
+  - trigger: ":we"
+    replace: "chris@chrisnowicki.net"
+
+  # GITHUB
+  - trigger: ":gh"
+    replace: "https://github.com/chrisnowicki"
+
+  # LINKEDIN
+  - trigger: ":li"
+    replace: "https://www.linkedin.com/in/chris-nowicki/"
+
+  # TWITCH
+  - trigger: ":tw"
+    replace: "https://twitch.tv/chriswix"
+
+  # WEBSITE
+  - trigger: ":w"
+    replace: "https://www.chrisnowicki.io"
+
+  # X
+  - trigger: ":x"
+    replace: "https://www.x.com/iamwix"
+
+  # UTILITIES
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"

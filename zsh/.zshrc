@@ -90,6 +90,12 @@ alias o="open ."
 alias rz="source ~/.zshrc"
 alias zconf="nvim ~/Dotfiles/zsh/.zshrc"
 
+# Dev
+alias nd="npm run dev"
+alias nb="npm run build"
+alias pd="pnpm run dev"
+alias pb="pnpm run build"
+
 # Git
 alias gaa='git add .'
 alias gcm='git commit -m'
