@@ -20,32 +20,7 @@ config = {
 	default_cursor_style = "BlinkingBar",
 	font = wezterm.font("MesloLGS Nerd Font Mono"),
 	font_size = 16,
-	colors = {
-		foreground = "#F8F8F2",
-		background = "#0B0D0F",
-		cursor_bg = "#E67070",
-		cursor_fg = "#0B0D0F",
-		ansi = {
-			"#21222C",
-			"#FF9580",
-			"#8AFF80",
-			"#FFFF80",
-			"#9580FF",
-			"#FF80BF",
-			"#80FFEA",
-			"#F8F8F2",
-		},
-		brights = {
-			"#708CA9",
-			"#FFBFB3",
-			"#B9FFB3",
-			"#FFFFB3",
-			"#BFB3FF",
-			"#FFB3D9",
-			"#B3FFF2",
-			"#FFFFFF",
-		},
-	},
+	color_scheme = "Catppuccin Mocha"
 }
 
 return config
