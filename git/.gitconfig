@@ -1,14 +1,21 @@
 [user]
 	name = Chris Nowicki
 	email = 102450568+chris-nowicki@users.noreply.github.com
+	
 [init]
 	defaultBranch = main
-[alias]
-	add-commit = !git add -A && git commit
+
 [push]
 	autoSetupRemote = true
+
+[credential]
+	helper = osxkeychain
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[includeIf "gitdir:~/Dev/thisdot/"]
+	path = ~/.gitconfig-work
