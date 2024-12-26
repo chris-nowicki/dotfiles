@@ -1,0 +1,8 @@
+theme = catppuccin-mocha
+background-opacity = 0.7
+background-blur-radius = 20
+macos-titlebar-style = hidden
+window-padding-x = 10
+window-padding-y = 10
+font-size = 13.5
+confirm-close-surface = false
