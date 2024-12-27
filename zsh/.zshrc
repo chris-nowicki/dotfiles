@@ -82,8 +82,8 @@ alias ....='cd ../../..'
 alias c="clear"
 alias cd="z"
 alias cm="npx cz"
-alias ll="eza -l --git --header --git-ignore --icons=always"
-alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git""
+alias ll="eza -l --git --header --git-ignore --icons=always --group-directories-first"
+alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git" --group-directories-first"
 alias ls='eza --icons=always'
 alias nv='nvim'
 alias o="open ."
