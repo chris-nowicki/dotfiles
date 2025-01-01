@@ -19,3 +19,4 @@
 
 [includeIf "gitdir:~/Dev/thisdot/"]
 	path = ~/.gitconfig-work
+
