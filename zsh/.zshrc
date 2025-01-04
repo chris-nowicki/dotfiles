@@ -79,6 +79,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # General
+alias bu="brew upgrade"
 alias c="clear"
 alias cd="z"
 alias cm="npx cz"
