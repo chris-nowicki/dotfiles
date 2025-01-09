@@ -1,10 +1,19 @@
+# Appearance
 theme = catppuccin-mocha
+font-size = 15.5
+bold-is-bright = true
+
+# Window settings
 background-opacity = 0.8
 background-blur-radius = 20
-macos-titlebar-style = hidden
+window-width = 95
+window-height = 34
 window-padding-x = 10
 window-padding-y = 10
-font-size = 15.5
+window-padding-balance = true
+macos-titlebar-style = hidden
 confirm-close-surface = false
-window-width = 104
-window-height = 27
+
+# Cursor and shell behavior
+cursor-style = underline
+shell-integration-features = no-cursor
