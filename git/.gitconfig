@@ -20,3 +20,5 @@
 [includeIf "gitdir:~/Dev/thisdot/"]
 	path = ~/.gitconfig-work
 
+[alias]
+    getconfig = "!git checkout v1-local-settings -- ./auth.json ./_assets/knopman.json ./backend/config/params.php ./common/config/main-local.php"

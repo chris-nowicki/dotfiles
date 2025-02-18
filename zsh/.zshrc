@@ -92,6 +92,7 @@ alias nv='nvim'
 alias o="open ."
 alias rz="source ~/.zshrc"
 alias zconf="nvim ~/Dotfiles/zsh/.zshrc"
+alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 
 # Dev
 alias nd="npm run dev"
@@ -120,3 +121,18 @@ precmd_functions+=( deferred_compinit )
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Herd injected PHP 8.4 configuration.
+export HERD_PHP_84_INI_SCAN_DIR="/Users/chris/Library/Application Support/Herd/config/php/84/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/chris/Library/Application Support/Herd/bin/":$PATH
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/chris/Library/Application Support/Herd/config/php/83/"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/chris/.lmstudio/bin"
