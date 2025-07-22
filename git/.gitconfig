@@ -11,14 +11,11 @@
 [credential]
 	helper = osxkeychain
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+[includeIf "gitdir:~/Dev/bigcommerce/"]
+	path = ~/.gitconfig-bc
 
-[includeIf "gitdir:~/Dev/thisdot/"]
-	path = ~/.gitconfig-work
+[pull]
+    rebase = true  # cleaner history than merge commits
 
 [alias]
-    getconfig = "!git checkout v1-local-settings -- ./auth.json ./_assets/knopman.json ./backend/config/params.php ./common/config/main-local.php"
+    whoami = config user.email  # check which email you're using

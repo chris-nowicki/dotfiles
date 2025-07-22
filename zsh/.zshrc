@@ -7,6 +7,12 @@ export HOMEBREW_NO_ENV_HINTS=1
 # NVM Configuration
 export NVM_LAZY_LOAD=true
 
+# History settings
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+
 # Aliases
 # General
 alias bu="brew upgrade"
@@ -25,11 +31,10 @@ alias nb="npm run build"
 alias pd="pnpm run dev"
 alias pb="pnpm run build"
 alias lg='lazygit'
+alias gcw='echo "Cloning work repo:" && git clone $(pbpaste | sed "s/github.com/github-bc/g")'
 
 # Herd PHP Configuration
 export PATH="/Users/chris/Library/Application Support/Herd/bin/":$PATH
-export HERD_PHP_83_INI_SCAN_DIR="/Users/chris/Library/Application Support/Herd/config/php/83/"
-export HERD_PHP_84_INI_SCAN_DIR="/Users/chris/Library/Application Support/Herd/config/php/84/"
 
 # Zsh Plugins
 eval "$(zoxide init zsh)"
