@@ -33,8 +33,5 @@ alias pb="pnpm run build"
 alias lg='lazygit'
 alias gcw='echo "Cloning work repo:" && git clone $(pbpaste | sed "s/github.com/github-bc/g")'
 
-# Herd PHP Configuration
-export PATH="/Users/chris/Library/Application Support/Herd/bin/":$PATH
-
 # Zsh Plugins
 eval "$(zoxide init zsh)"
