@@ -47,6 +47,7 @@ alias gcw='echo "Cloning work repo:" && git clone $(pbpaste | sed "s/github.com/
 
 # Zsh Plugins
 eval "$(zoxide init zsh)"
+eval $(thefuck --alias fuck)
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
