@@ -1,0 +1,55 @@
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+	"version": "0.2",
+	"useGitignore": true,
+	"allowCompoundWords": true,
+	"enabled": true,
+	// Only check these file types (others are skipped by default)
+	"enabledFileTypes": {
+		"*": false,
+		"markdown": true,
+		"plaintext": true,
+		"git-commit": true,
+		"yaml": true,
+		"toml": true,
+		"javascript": false,
+		"javascriptreact": false,
+		"typescript": false,
+		"typescriptreact": false,
+		"svelte": false,
+		"astro": false,
+		"html": false
+	},
+	// Only scan comments and string literals inside code files
+	"patterns": [
+		{
+			"name": "cStyleComments",
+			"pattern": "/(?:(?:\\/\\*[\\s\\S]*?\\*\\/)|(?:\\/\\/.*))/g"
+		},
+		{
+			"name": "stringLiterals",
+			"pattern": "/(\"(?:[^\\\\\"]|\\\\.)*\"|'(?:[^\\\\']|\\\\.)*'|`(?:[^\\\\`]|\\\\.)*`)/g"
+		}
+	],
+	"includeRegExpList": [
+		"cStyleComments",
+		"stringLiterals"
+	],
+	// Ignore noisy tokens
+	"ignoreRegExpList": [
+		"/\\b[0-9a-f]{7,}\\b/g", // hashes, SHAs
+		"/\\b[A-Z0-9_]{3,}\\b/g" // CONSTANT_CASE, ENV vars
+	],
+	// Your small curated dictionary
+	"words": [
+		"lucide",
+		"meslo",
+		"neurodivergent",
+		"Nowicki",
+		"raycast",
+		"shadcn",
+		"tailwindcss",
+		"Trackpad",
+		"zustand"
+	]
+}
