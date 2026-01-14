@@ -11,6 +11,7 @@ karabiner/.config/karabiner/automatic_backups/
 .Thumbs.db
 
 # IDE
+.cursor/
 .idea/
 .vscode/
 *.swp
