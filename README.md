@@ -37,6 +37,15 @@ cd ~/Dotfiles
 ./install.sh
 ```
 
+## Repository Structure
+
+This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage dotfiles. Each directory represents a separate stow package that gets symlinked to your home directory.
+
+The repository includes a `.gitignore` file to prevent tracking of:
+- macOS system files (`.DS_Store`, etc.)
+- Auto-generated backup files (e.g., Karabiner automatic backups)
+- IDE configuration files
+
 ## TODO List
 
 - [ ] Make a checklist of steps to decommission your computer before wiping your hard drive.
