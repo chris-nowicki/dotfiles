@@ -1,0 +1,13 @@
+theme = Catppuccin Mocha
+font-family = MesloLGS Nerd Font Mono
+font-size = 18
+background-opacity = 0.8
+background-blur = 10
+background-blur-radius = 10
+macos-titlebar-style = hidden
+shell-integration = zsh
+window-height = 30
+window-width = 110
+macos-window-shadow = false
+quit-after-last-window-closed = true
+confirm-close-surface = false
