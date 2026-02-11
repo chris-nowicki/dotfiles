@@ -11,6 +11,9 @@ if ! command -v stow &> /dev/null; then
   exit 1
 fi
 
+# Packages to skip when stowing (add more names as needed, e.g. tmux)
+EXCLUDE=(streamdeck)
+
 # Install dotfiles using stow
 for dir in */; do
   # Skip if directory is empty or doesn't contain files
@@ -21,6 +24,10 @@ for dir in */; do
   
   # Remove trailing slash for stow
   dir_name="${dir%/}"
+  if (( ${EXCLUDE[(I)$dir_name]} )); then
+    echo "Skipping excluded: $dir_name"
+    continue
+  fi
   echo "Stowing $dir_name..."
   
   if ! stow "$dir_name"; then
