@@ -56,7 +56,7 @@ Ghostty is the configured terminal emulator:
 The zsh/.zshrc contains:
 - **Prompt**: Powerlevel10k with custom p10k.zsh configuration
 - **Navigation**: Zoxide (replaces `cd` with `z`)
-- **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting, thefuck
+- **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
 - **Node management**: NVM with lazy loading (deferred sourcing until first use)
 - **Aliases**: Development shortcuts for npm, pnpm, git, lazygit
 
