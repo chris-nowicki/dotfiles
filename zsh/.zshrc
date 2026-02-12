@@ -8,15 +8,21 @@ fi
 # Environment Variables
 export HOMEBREW_NO_ENV_HINTS=1
 
-# NVM Configuration
-export NVM_LAZY_LOAD=true
-
+# NVM Configuration (lazy-loaded for fast shell startup)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+nvm() {
+  unfunction nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
+
+node() { nvm --version > /dev/null 2>&1; unfunction node 2>/dev/null; node "$@"; }
+npm() { nvm --version > /dev/null 2>&1; unfunction npm 2>/dev/null; npm "$@"; }
+npx() { nvm --version > /dev/null 2>&1; unfunction npx 2>/dev/null; npx "$@"; }
 
 # History settings
-# history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
@@ -58,3 +64,5 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.local/bin:$PATH"

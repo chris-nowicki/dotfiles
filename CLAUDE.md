@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, wezterm, git, karabiner, warp, and cspell.
+This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, git, karabiner, tmux, streamdeck, and cspell.
 
 ## Key Commands
 
@@ -46,19 +46,18 @@ The git package uses conditional includes for automatic email switching:
 
 When adding new git accounts, follow this pattern by creating additional `.gitconfig-[suffix]` files with corresponding `includeIf` sections.
 
-### Terminal Configurations
-Three terminal emulators are configured (ghostty, wezterm, warp):
-- All use **Catppuccin Mocha** theme
-- All use **MesloLGS Nerd Font Mono** (size 18-19)
-- Ghostty and WezTerm share identical visual settings (opacity 0.8, blur 10)
-- Only one terminal's config is active at a time (user preference)
+### Terminal Configuration
+Ghostty is the configured terminal emulator:
+- Uses **Catppuccin Mocha** theme
+- Uses **MesloLGS Nerd Font Mono** (size 18-19)
+- Visual settings: opacity 0.8, blur 10
 
 ### Zsh Enhancement Stack
-The zsh/.zshrc:1-154 contains:
+The zsh/.zshrc contains:
 - **Prompt**: Powerlevel10k with custom p10k.zsh configuration
 - **Navigation**: Zoxide (replaces `cd` with `z`)
 - **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting, thefuck
-- **Node management**: NVM with lazy loading enabled
+- **Node management**: NVM with lazy loading (deferred sourcing until first use)
 - **Aliases**: Development shortcuts for npm, pnpm, git, lazygit
 
 ### Karabiner Keyboard Remapping
