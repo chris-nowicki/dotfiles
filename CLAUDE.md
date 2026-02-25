@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, git, karabiner, tmux, streamdeck, and cspell.
+This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, git, karabiner, tmux, streamdeck, starship, and cspell.
 
 ## Key Commands
 
@@ -54,7 +54,7 @@ Ghostty is the configured terminal emulator:
 
 ### Zsh Enhancement Stack
 The zsh/.zshrc contains:
-- **Prompt**: Powerlevel10k with custom p10k.zsh configuration
+- **Prompt**: Starship (cross-shell prompt)
 - **Navigation**: Zoxide (replaces `cd` with `z`)
 - **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
 - **Node management**: NVM with lazy loading (deferred sourcing until first use)
