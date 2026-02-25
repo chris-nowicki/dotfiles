@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Environment Variables
 export HOMEBREW_NO_ENV_HINTS=1
 
@@ -18,9 +11,9 @@ nvm() {
   nvm "$@"
 }
 
-node() { nvm --version > /dev/null 2>&1; unfunction node 2>/dev/null; node "$@"; }
-npm() { nvm --version > /dev/null 2>&1; unfunction npm 2>/dev/null; npm "$@"; }
-npx() { nvm --version > /dev/null 2>&1; unfunction npx 2>/dev/null; npx "$@"; }
+node() { nvm --version > /dev/null 2>&1; node "$@"; }
+npm() { nvm --version > /dev/null 2>&1; npm "$@"; }
+npx() { nvm --version > /dev/null 2>&1; npx "$@"; }
 
 # History settings
 HISTFILE=$HOME/.zhistory
@@ -36,7 +29,6 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # Aliases
-# General
 alias bu="brew upgrade"
 alias c="clear"
 alias cd="z"
@@ -47,7 +39,6 @@ alias o="open ."
 alias rz="source ~/.zshrc"
 alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
 
-# Development
 alias nd="npm run dev"
 alias nb="npm run build"
 alias pd="pnpm run dev"
@@ -55,13 +46,10 @@ alias pb="pnpm run build"
 alias lg='lazygit'
 alias gcw='echo "Cloning work repo:" && git clone $(pbpaste | sed "s/github.com/github-bc/g")'
 
-# Zsh Plugins
+# Plugins
 eval "$(zoxide init zsh)"
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+eval "$(starship init zsh)"
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
