@@ -48,16 +48,16 @@ When adding new git accounts, follow this pattern by creating additional `.gitco
 
 ### Terminal Configuration
 Ghostty is the configured terminal emulator:
-- Uses **Catppuccin Mocha** theme
+- Uses **GitHub Dark** theme
 - Uses **MesloLGS Nerd Font Mono** (size 18-19)
 - Visual settings: opacity 0.8, blur 10
 
 ### Zsh Enhancement Stack
 The zsh/.zshrc contains:
 - **Prompt**: Starship (cross-shell prompt)
-- **Navigation**: Zoxide (replaces `cd` with `z`)
+- **Navigation**: Zoxide (smart directory jumping with `z`)
 - **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
-- **Node management**: NVM with lazy loading (deferred sourcing until first use)
+- **Node management**: Volta (fast Rust-based Node version manager)
 - **Aliases**: Development shortcuts for npm, pnpm, git, lazygit
 
 ### Karabiner Keyboard Remapping
