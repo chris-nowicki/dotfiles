@@ -1,24 +1,14 @@
 # Environment Variables
 export HOMEBREW_NO_ENV_HINTS=1
 
-# NVM Configuration (lazy-loaded for fast shell startup)
-export NVM_DIR="$HOME/.nvm"
-
-nvm() {
-  unfunction nvm node npm npx
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-  nvm "$@"
-}
-
-node() { nvm --version > /dev/null 2>&1; node "$@"; }
-npm() { nvm --version > /dev/null 2>&1; npm "$@"; }
-npx() { nvm --version > /dev/null 2>&1; npx "$@"; }
+# Volta (Node version manager)
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # History settings
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+SAVEHIST=10000
+HISTSIZE=10000
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -31,13 +21,15 @@ bindkey '^[[B' history-search-forward
 # Aliases
 alias bu="brew upgrade"
 alias c="clear"
-alias cd="z"
-alias ll="eza -l --git --header --git-ignore --icons=always --group-directories-first"
-alias lla="eza -laR --git -T --header --git-ignore --ignore-glob=".git" --group-directories-first"
-alias ls='eza --icons=always'
-alias o="open ."
+alias ls='eza --icons=always --group-directories-first'
+alias ll='eza -l --git --header --git-ignore --icons=always --group-directories-first'
+alias lla='eza -la --git -T --header --git-ignore --ignore-glob=".git" --group-directories-first'
 alias rz="source ~/.zshrc"
 alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias nd="npm run dev"
 alias nb="npm run build"
