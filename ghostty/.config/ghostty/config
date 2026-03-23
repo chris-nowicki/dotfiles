@@ -1,4 +1,4 @@
-theme = GitHub Dark
+theme = TokyoNight Storm
 font-family = MesloLGS Nerd Font Mono
 font-size = 18
 background-opacity = 0.8
@@ -11,3 +11,4 @@ macos-window-shadow = false
 quit-after-last-window-closed = true
 confirm-close-surface = false
 window-new-tab-position = current
+background = #000000

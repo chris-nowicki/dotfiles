@@ -1,7 +1,7 @@
-# Starship Prompt Configuration — Pure style + Monochrome
+# Starship Prompt Configuration — Pure style + Tokyo Night
 # https://starship.rs/presets/pure-preset
 
-palette = "monochrome"
+palette = "tokyo-night"
 add_newline = true
 
 format = """
@@ -52,12 +52,12 @@ min_time = 500
 format = "[$virtualenv]($style) "
 style = "overlay0"
 
-[palettes.monochrome]
-blue = "#ededed"
-mauve = "#ffffff"
-red = "#ff4444"
-green = "#a1a1a1"
-pink = "#a1a1a1"
-teal = "#888888"
-yellow = "#888888"
-overlay0 = "#666666"
+[palettes.tokyo-night]
+blue = "#7aa2f7"
+mauve = "#bb9af7"
+red = "#f7768e"
+green = "#9ece6a"
+pink = "#ff9e64"
+teal = "#2ac3de"
+yellow = "#e0af68"
+overlay0 = "#565f89"
