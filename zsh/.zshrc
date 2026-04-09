@@ -37,6 +37,7 @@ alias pd="pnpm run dev"
 alias pb="pnpm run build"
 alias lg='lazygit'
 alias gcw='echo "Cloning work repo:" && git clone $(pbpaste | sed "s/github.com/github-bc/g")'
+alias gcwm='echo "Mirroring work repo:" && git clone --mirror $(pbpaste | sed "s/github.com/github-bc/g")'
 
 # Plugins
 eval "$(zoxide init zsh)"

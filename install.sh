@@ -11,7 +11,7 @@ if ! command -v stow &> /dev/null; then
   exit 1
 fi
 
-# Packages to skip when stowing (add more names as needed, e.g. tmux)
+# Packages to skip when stowing (add more names as needed)
 EXCLUDE=(streamdeck)
 
 # Install dotfiles using stow

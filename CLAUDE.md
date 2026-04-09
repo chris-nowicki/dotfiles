@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, git, karabiner, tmux, streamdeck, starship, and cspell.
+This is a personal dotfiles repository using GNU Stow for symlink management. Each top-level directory represents a stow package that gets symlinked to the home directory (`~/`). The repository configures: zsh, ghostty, git, karabiner, streamdeck, and starship.
 
 ## Key Commands
 
@@ -48,8 +48,8 @@ When adding new git accounts, follow this pattern by creating additional `.gitco
 
 ### Terminal Configuration
 Ghostty is the configured terminal emulator:
-- Uses **GitHub Dark** theme
-- Uses **MesloLGS Nerd Font Mono** (size 18-19)
+- Uses **Tokyo Night Storm** theme
+- Uses **MesloLGS Nerd Font Mono** (size 18)
 - Visual settings: opacity 0.8, blur 10
 
 ### Zsh Enhancement Stack
@@ -80,12 +80,6 @@ Prevents tracking of:
 - Karabiner automatic backups
 - IDE configuration (`.cursor/`, `.idea/`, `.vscode/`)
 - Editor artifacts (`*.swp`, `*.swo`)
-
-### CSpell Configuration (cspell/.config/cspell/cspell.json:1-34)
-- Only checks non-code files (markdown, yaml, toml, git-commit, plaintext)
-- Code files (JS, TS, JSX, TSX, etc.) explicitly disabled
-- Custom dictionary includes: lucide, shadcn, zustand, tailwindcss, Raycast
-- Ignores: hashes, SHAs, CONSTANT_CASE environment variables
 
 ## Development Workflow
 
