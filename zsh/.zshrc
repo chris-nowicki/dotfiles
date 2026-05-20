@@ -7,10 +7,6 @@ typeset -U path PATH
 # Completion system
 autoload -Uz compinit && compinit
 
-# Volta (Node version manager)
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # History settings
 HISTFILE=$HOME/.zhistory
 SAVEHIST=10000
