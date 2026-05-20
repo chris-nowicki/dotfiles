@@ -57,7 +57,7 @@ The zsh/.zshrc contains:
 - **Prompt**: Starship (cross-shell prompt)
 - **Navigation**: Zoxide (smart directory jumping with `z`)
 - **Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
-- **Node management**: Volta (fast Rust-based Node version manager)
+- **Node management**: nvm (loaded from `~/.zprofile`)
 - **Aliases**: Development shortcuts for npm, pnpm, git, lazygit
 
 ### Karabiner Keyboard Remapping
