@@ -75,3 +75,21 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Prune remote-tracking refs and delete local branches whose upstream is gone
+# Usage: gone            # safe delete (-d, refuses unmerged)
+#        gone -f | -D    # force delete (-D)
+gone() {
+  local flag="-d"
+  case "$1" in
+    -f|-D|--force) flag="-D" ;;
+  esac
+  git fetch --prune || return
+  local branches
+  branches=$(git branch -vv | awk '/: gone]/{print $1}')
+  if [ -z "$branches" ]; then
+    echo "No gone branches."
+    return
+  fi
+  echo "$branches" | xargs git branch "$flag"
+}
