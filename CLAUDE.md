@@ -8,8 +8,8 @@ Personal dotfiles for two Macs (a work laptop and a personal machine),
 **mid-migration from GNU Stow to Nix / home-manager (flakes)**.
 
 Current state is **hybrid**:
-- **home-manager** manages `zsh`, `git`, and `ssh` (the things that diverge per machine).
-- **GNU Stow** still manages `ghostty`, `karabiner`, and `streamdeck`.
+- **home-manager** manages `zsh`, `git`, `ssh`, `starship`, and `ghostty`.
+- **GNU Stow** still manages `streamdeck` (the only remaining stow package).
 
 Both machines are served from one flake via named configurations:
 - `work-laptop` — this machine; carries **both** personal (default) and work
@@ -74,12 +74,12 @@ Still manages the not-yet-migrated packages. Each top-level dir (except `.git`,
 symlinked with Stow. Prereq: `brew install stow`.
 
 ```bash
-stow [package]      # link a package (ghostty, karabiner, streamdeck)
+stow [package]      # link a package (streamdeck)
 stow -D [package]   # unlink (used when migrating a package to Nix)
 stow -R [package]   # re-stow after directory-structure changes
 ```
 
-Example: `ghostty/.config/ghostty/config` → `~/.config/ghostty/config`.
+Example: `streamdeck/...` → `~/...`.
 
 The `zsh`, `git`, and `starship` package dirs remain in the repo as a **fallback
 during the transition** (their symlinks were removed with `stow -D`). Re-running
@@ -89,25 +89,17 @@ during the transition** (their symlinks were removed with `stow -D`). Re-running
 
 - ✅ `zsh`, `git`, `ssh` → home-manager (branch `feat/nix-home-manager`).
 - ✅ CLI packages `pnpm`, `stow` → Nix (eza/gh/lazygit/zoxide/starship already in slice 1).
+- ✅ `ghostty` → home-manager (dumb symlink); `karabiner` removed (unused — Raycast).
 - ⬜ Homebrew module (nix-darwin) for casks + `mas`, and the CLI tools that stay
   on brew (`mole` = tw93 Mac cleaner, `rulesync`); drop cruft (`omp`, `merve`).
-- ⬜ Dumb-symlink `ghostty` + `karabiner` configs, then retire their stow packages.
-- ⬜ Retire Stow entirely; update `install.sh`.
+- ⬜ Retire Stow entirely (migrate `streamdeck`); update `install.sh`.
 - ⬜ (Later) nix-darwin for macOS `defaults` (from the `~/Setup` repo), then archive `~/Setup`.
-
-## Karabiner Keyboard Remapping
-
-The `karabiner` package (still Stow-managed) remaps Caps Lock to a Hyper Key
-(Ctrl+Shift+Cmd+Option):
-- Pressing alone still sends Caps Lock (preserves toggle functionality).
-- Holding creates the modifier combination for custom shortcuts.
-- Complex modifications live in `karabiner.json` and
-  `assets/complex_modifications/`.
 
 ## Terminal Configuration
 
-Ghostty (Stow-managed) is the terminal emulator: **Tokyo Night Storm** theme,
-**MesloLGS Nerd Font Mono** (size 18), opacity 0.8, blur 10.
+Ghostty (config managed by home-manager) is the terminal emulator: **Tokyo Night
+Storm** theme, **MesloLGS Nerd Font Mono** (size 18), opacity 0.8, blur 10. Edit
+`ghostty/.config/ghostty/config` in the repo, then `home-manager switch`.
 
 ## Notes
 
@@ -115,5 +107,5 @@ Ghostty (Stow-managed) is the terminal emulator: **Tokyo Night Storm** theme,
 - New-machine bootstrap order: Xcode CLT → Nix (Determinate installer) →
   `ssh-keygen` a fresh per-machine key + add to GitHub → clone this repo over
   HTTPS → `home-manager switch --flake ~/Dotfiles#<host>`.
-- `.gitignore` prevents tracking `.DS_Store`, Karabiner backups, IDE dirs
-  (`.cursor/`, `.idea/`, `.vscode/`), and editor artifacts.
+- `.gitignore` prevents tracking `.DS_Store`, IDE dirs (`.cursor/`, `.idea/`,
+  `.vscode/`), and editor artifacts.

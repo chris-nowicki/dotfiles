@@ -25,8 +25,10 @@
     stow # keeps the stow-based rollback path independent of Homebrew
   ];
 
-  # Keep the hand-tuned starship prompt verbatim (dumb symlink, no rewrite).
+  # Static configs kept verbatim (dumb symlinks, no rewrite). These become
+  # read-only symlinks into /nix/store — edit the repo file + re-switch to change.
   xdg.configFile."starship.toml".source = ../starship/.config/starship.toml;
+  xdg.configFile."ghostty/config".source = ../ghostty/.config/ghostty/config;
 
   programs.home-manager.enable = true;
 }
