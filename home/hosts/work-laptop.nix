@@ -1,9 +1,9 @@
 { ... }:
 {
-  # Work identity, scoped to ~/Dev/commerce/ (mirrors the old includeIf gitdir).
+  # Work identity, scoped to ~/code/commerce/ (where work repos live).
   programs.git.includes = [
     {
-      condition = "gitdir:~/Dev/commerce/";
+      condition = "gitdir:~/code/commerce/";
       contents.user.email = "chris.nowicki@bigcommerce.com";
     }
   ];
