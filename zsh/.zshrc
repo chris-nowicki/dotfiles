@@ -93,3 +93,4 @@ gone() {
   fi
   echo "$branches" | xargs git branch "$flag"
 }
+export PATH="$HOME/bin:$PATH"
