@@ -11,14 +11,18 @@
   # Never bump this casually — it pins state-migration behavior.
   home.stateVersion = "25.05";
 
-  # CLI tools the interactive shell depends on (first migration slice).
-  # More packages (pnpm, mole, rulesync, stow) land in a later slice.
+  # CLI tools managed by Nix.
+  # Still on Homebrew (formalized later via the homebrew module): mole
+  # (tw93 Mac cleaner — nixpkgs `mole` is a different tool), rulesync
+  # (not packaged), mas. Node is left to nvm.
   home.packages = with pkgs; [
     eza
     zoxide
     starship
     lazygit
     gh
+    pnpm
+    stow # keeps the stow-based rollback path independent of Homebrew
   ];
 
   # Keep the hand-tuned starship prompt verbatim (dumb symlink, no rewrite).

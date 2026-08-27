@@ -88,8 +88,9 @@ during the transition** (their symlinks were removed with `stow -D`). Re-running
 ## Migration status / next steps
 
 - ✅ `zsh`, `git`, `ssh` → home-manager (branch `feat/nix-home-manager`).
-- ⬜ Remaining CLI packages (pnpm, mole, rulesync, stow) into Nix.
-- ⬜ Homebrew module (nix-darwin) for casks + `mas`, split per machine.
+- ✅ CLI packages `pnpm`, `stow` → Nix (eza/gh/lazygit/zoxide/starship already in slice 1).
+- ⬜ Homebrew module (nix-darwin) for casks + `mas`, and the CLI tools that stay
+  on brew (`mole` = tw93 Mac cleaner, `rulesync`); drop cruft (`omp`, `merve`).
 - ⬜ Dumb-symlink `ghostty` + `karabiner` configs, then retire their stow packages.
 - ⬜ Retire Stow entirely; update `install.sh`.
 - ⬜ (Later) nix-darwin for macOS `defaults` (from the `~/Setup` repo), then archive `~/Setup`.
