@@ -124,6 +124,15 @@ took effect before calling it done.
 Same 4 steps for either machine. The only differences are the SSH key name and
 which config you activate.
 
+> [!NOTE]
+> **"How do I get the repo before SSH is set up?"** You don't need SSH for that.
+> This repo is **public**, so you `git clone` it over **HTTPS** — no key, no
+> login. SSH keys are only for *pushing* changes and for the generated
+> `~/.ssh/config`; the clone itself never touches them. So the order is:
+> **clone over HTTPS → create your key → `switch`.** Afterward, point the remote
+> at SSH so you can push:
+> `git remote set-url origin git@github.com:chris-nowicki/dotfiles.git`.
+
 ### 0. Prerequisites (both)
 
 1. Run the [mac-setup](https://github.com/chris-nowicki/mac-setup) guide.
