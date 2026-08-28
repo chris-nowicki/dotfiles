@@ -22,14 +22,15 @@
   # Declarative Homebrew. nix-darwin drives an already-installed brew; it does
   # not install Homebrew itself.
   #
-  # cleanup = "uninstall": enforce the manifest — remove any brew formula/cask
-  # not declared here. This drops the brew copies of tools now provided by Nix
-  # (eza, gh, lazygit, starship, stow, zoxide, zsh plugins). "uninstall" keeps
-  # app data (unlike "zap").
+  # cleanup = "none": additive only, never auto-uninstall. The one-time removal
+  # of the Nix-duplicated brew tools is already done; ongoing "uninstall" is too
+  # risky here — it mis-handles tap-qualified casks (it wrongly removed
+  # aprilnea/tap/openlogi@latest) and prompts interactively mid-activation.
+  # Remove a cask manually with `brew uninstall` when needed.
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "uninstall";
+      cleanup = "none";
       autoUpdate = false;
       upgrade = false;
     };

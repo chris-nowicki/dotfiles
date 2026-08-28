@@ -10,6 +10,9 @@
     "vale" # prose linter
   ];
 
+  # Third-party taps (casks/formulae not in homebrew/core|cask).
+  homebrew.taps = [ "aprilnea/tap" ]; # openlogi
+
   # GUI apps + fonts currently on this machine. When the personal machine is set
   # up, the shared subset moves to darwin/common.nix.
   homebrew.casks = [
@@ -25,7 +28,7 @@
     "linear"
     "obs"
     "obsidian"
-    "openlogi@latest"
+    "aprilnea/tap/openlogi@latest" # tap-qualified — short name gets mis-removed
     "screen-studio"
     "visual-studio-code"
     "wispr-flow"
