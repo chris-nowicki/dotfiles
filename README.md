@@ -24,6 +24,7 @@ switch` applies system + apps + dotfiles together.
 - [How it works](#how-it-works)
 - [Repository structure](#repository-structure)
 - [Daily use](#daily-use)
+- [Making changes with Claude](#making-changes-with-claude)
 - [New machine setup](#new-machine-setup)
   - [Personal machine](#personal-machine)
   - [Work machine](#work-machine)
@@ -92,6 +93,29 @@ sudo darwin-rebuild switch --rollback
 > [!TIP]
 > Flakes only see **git-tracked** files. `git add` new files before building or
 > Nix won't find them.
+
+---
+
+## Making changes with Claude
+
+This repo ships an **`apply-config`** [skill](.claude/skills/apply-config/SKILL.md)
+for [Claude Code](https://claude.com/claude-code). Run Claude Code inside
+`~/Dotfiles`, ask for a config change, and it follows the safe loop automatically:
+**edit the source → dry-build → `./install.sh` → verify in a fresh shell → commit.**
+
+Just say what you want (or type `/apply-config`):
+
+| You say… | It edits | and verifies |
+|---|---|---|
+| "add Slack to my apps" | `homebrew.casks` in `darwin/hosts/work-laptop.nix` | app installed in `/Applications` |
+| "bump my ghostty font size to 20" | `ghostty/.config/ghostty/config` | reload Ghostty (`Cmd+Shift+,`) |
+| "add an alias `k` for kubectl" | `shellAliases` in `modules/zsh.nix` | alias resolves in a fresh shell |
+| "add ripgrep as a CLI tool" | `home.packages` in `home/common.nix` (Nix, not brew) | `command -v rg` → Nix |
+| "change my work email to me@newco.com" | `programs.git.includes` in `home/hosts/work-laptop.nix` | `git config user.email` under `~/code/commerce/` |
+
+It handles the gotchas for you — dry-build before switching, tap-qualified casks,
+editing the repo source (not the read-only live symlink), and verifying the change
+took effect before calling it done.
 
 ---
 
