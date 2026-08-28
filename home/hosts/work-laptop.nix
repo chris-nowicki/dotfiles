@@ -21,20 +21,21 @@
     enableDefaultConfig = false; # don't emit a `Host *` block we never had
     includes = [ "conductor_config" ]; # preserve Conductor's Include line
 
-    matchBlocks = {
+    # settings keyed by Host pattern, using upstream ssh_config directive names.
+    settings = {
       "github.com" = {
-        hostname = "github.com";
-        identityFile = "~/.ssh/id_ed25519_personal";
-        addKeysToAgent = "yes";
-        identitiesOnly = true;
-        extraOptions.UseKeychain = "yes";
+        HostName = "github.com";
+        IdentityFile = "~/.ssh/id_ed25519_personal";
+        AddKeysToAgent = "yes";
+        IdentitiesOnly = "yes";
+        UseKeychain = "yes";
       };
       "github-bc" = {
-        hostname = "github.com";
-        identityFile = "~/.ssh/id_ed25519_bc";
-        addKeysToAgent = "yes";
-        identitiesOnly = true;
-        extraOptions.UseKeychain = "yes";
+        HostName = "github.com";
+        IdentityFile = "~/.ssh/id_ed25519_bc";
+        AddKeysToAgent = "yes";
+        IdentitiesOnly = "yes";
+        UseKeychain = "yes";
       };
     };
   };

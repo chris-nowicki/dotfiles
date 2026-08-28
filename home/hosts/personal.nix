@@ -4,12 +4,12 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false; # don't emit a `Host *` block we never had
-    matchBlocks."github.com" = {
-      hostname = "github.com";
-      identityFile = "~/.ssh/id_ed25519";
-      addKeysToAgent = "yes";
-      identitiesOnly = true;
-      extraOptions.UseKeychain = "yes";
+    settings."github.com" = {
+      HostName = "github.com";
+      IdentityFile = "~/.ssh/id_ed25519";
+      AddKeysToAgent = "yes";
+      IdentitiesOnly = "yes";
+      UseKeychain = "yes";
     };
   };
 }
