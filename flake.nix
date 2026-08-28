@@ -1,5 +1,5 @@
 {
-  description = "Chris Nowicki — home-manager config (work laptop + personal)";
+  description = "Chris Nowicki — Nix (nix-darwin + home-manager) config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -14,40 +14,29 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-darwin, ... }:
-    let
-      # Both Macs are Apple Silicon. Change here if a machine is Intel.
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-
-      mkHome =
-        hostModule:
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home/common.nix
-            hostModule
-          ];
-        };
-    in
+    { home-manager, nix-darwin, ... }:
     {
-      # home-manager (user/dotfiles) — activated with `home-manager switch`.
-      # Will be folded into nix-darwin next; kept standalone during transition.
-      homeConfigurations = {
-        # This work laptop: carries BOTH personal (default) and work
-        # (~/code/commerce/) identities.
-        "work-laptop" = mkHome ./home/hosts/work-laptop.nix;
-
-        # Personal machine: personal identity only.
-        "personal" = mkHome ./home/hosts/personal.nix;
-      };
-
-      # nix-darwin (system + declarative Homebrew) — activated with
-      # `sudo darwin-rebuild switch --flake .#C7Q95C63WW`.
+      # One integrated config: system + Homebrew + home-manager dotfiles.
+      # Activate: `sudo darwin-rebuild switch --flake ~/Dotfiles#C7Q95C63WW`
+      #
+      # The personal machine will get its own darwinConfigurations entry that
+      # imports ./home/hosts/personal.nix (unreferenced for now).
       darwinConfigurations."C7Q95C63WW" = nix-darwin.lib.darwinSystem {
         modules = [
           ./darwin/common.nix
           ./darwin/hosts/work-laptop.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true; # HM uses nix-darwin's pkgs
+              useUserPackages = true; # home.packages → /etc/profiles/per-user
+              backupFileExtension = "hm-bak"; # safety net for the standalone→module handoff
+              users."chris.nowicki".imports = [
+                ./home/common.nix
+                ./home/hosts/work-laptop.nix
+              ];
+            };
+          }
         ];
       };
     };

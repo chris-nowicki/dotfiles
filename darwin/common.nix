@@ -9,6 +9,9 @@
   # Required for user-scoped options (e.g. the homebrew module runs as this user).
   system.primaryUser = "chris.nowicki";
 
+  # The user home-manager manages (the account already exists on the machine).
+  users.users."chris.nowicki".home = "/Users/chris.nowicki";
+
   # nix-darwin state version (separate from home-manager's).
   system.stateVersion = 6;
 
