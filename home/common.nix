@@ -23,15 +23,10 @@
     gh
     pnpm
     stow # keeps the stow-based rollback path independent of Homebrew
-
-    # `restart-streamdeck` command (was streamdeck/restart-streamdeck.sh, a
-    # never-stowed helper — now a reproducible command on PATH).
-    (writeShellScriptBin "restart-streamdeck" ''
-      osascript -e 'tell application "Stream Deck" to quit'
-      sleep 3
-      open "/Applications/Elgato Stream Deck.app"
-    '')
   ];
+
+  # NOTE: streamdeck/restart-streamdeck.sh is a plain repo asset (not Nix-managed)
+  # — the Stream Deck runs it directly at ~/Dotfiles/streamdeck/restart-streamdeck.sh.
 
   # Static configs kept verbatim (dumb symlinks, no rewrite). These become
   # read-only symlinks into /nix/store — edit the repo file + re-switch to change.
