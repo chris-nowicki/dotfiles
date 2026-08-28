@@ -1,8 +1,8 @@
 { ... }:
 {
   # Brew-only CLI. The Nix-duplicated tools (eza, gh, lazygit, starship, stow,
-  # zoxide, zsh-*) are intentionally omitted — home-manager owns those, and the
-  # brew copies get cleaned up when cleanup flips to "uninstall".
+  # zoxide, zsh-*) are intentionally omitted — home-manager owns those (their
+  # brew copies were already removed).
   homebrew.brews = [
     "corepack" # Node package-manager shim (works with nvm-managed node)
     "mole" # tw93 Mac cleaner (nixpkgs `mole` is a different tool)
