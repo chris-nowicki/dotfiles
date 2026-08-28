@@ -1,47 +1,18 @@
 { ... }:
 {
-  # Brew-only CLI. The Nix-duplicated tools (eza, gh, lazygit, starship, stow,
-  # zoxide, zsh-*) are intentionally omitted — home-manager owns those (their
-  # brew copies were already removed).
+  # This machine's user (corporate account).
+  system.primaryUser = "chris.nowicki";
+  users.users."chris.nowicki".home = "/Users/chris.nowicki";
+
+  # Work-only brew CLI (shared mole/rulesync live in darwin/common.nix).
   homebrew.brews = [
     "corepack" # Node package-manager shim (works with nvm-managed node)
-    "mole" # tw93 Mac cleaner (nixpkgs `mole` is a different tool)
-    "rulesync" # not packaged in nixpkgs
     "vale" # prose linter
   ];
 
-  # Third-party taps (casks/formulae not in homebrew/core|cask).
-  homebrew.taps = [ "aprilnea/tap" ]; # openlogi
-
-  # GUI apps + fonts currently on this machine. When the personal machine is set
-  # up, the shared subset moves to darwin/common.nix.
+  # Work-only apps (shared apps + fonts live in darwin/common.nix).
   homebrew.casks = [
-    "alt-tab"
     "bruno"
-    "capcut"
-    "chatgpt"
-    "claude-code"
-    "cleanshot"
-    "codex"
-    "cursor"
-    "ghostty"
     "linear"
-    "obs"
-    "obsidian"
-    "aprilnea/tap/openlogi@latest" # tap-qualified — short name gets mis-removed
-    "screen-studio"
-    "visual-studio-code"
-    "wispr-flow"
-
-    # Fonts
-    "font-anonymous-pro"
-    "font-geist"
-    "font-geist-mono"
-    "font-inter"
-    "font-meslo-lg-nerd-font"
-    "font-reenie-beanie"
   ];
-
-  # masApps: none enumerated (mas not signed in / no App Store apps here). Add as
-  # `homebrew.masApps = { "Name" = <id>; };` if that changes.
 }

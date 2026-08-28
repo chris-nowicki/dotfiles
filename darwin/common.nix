@@ -6,11 +6,7 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Required for user-scoped options (e.g. the homebrew module runs as this user).
-  system.primaryUser = "chris.nowicki";
-
-  # The user home-manager manages (the account already exists on the machine).
-  users.users."chris.nowicki".home = "/Users/chris.nowicki";
+  # Per-host: system.primaryUser + users.users.<name>.home (usernames differ).
 
   # nix-darwin state version (separate from home-manager's).
   system.stateVersion = 6;
@@ -34,5 +30,35 @@
       autoUpdate = false;
       upgrade = false;
     };
+
+    # Shared across both machines. Per-host extras live in darwin/hosts/*.nix.
+    taps = [ "aprilnea/tap" ]; # openlogi
+    brews = [
+      "mole" # tw93 Mac cleaner
+      "rulesync"
+    ];
+    casks = [
+      "alt-tab"
+      "capcut"
+      "chatgpt"
+      "claude-code"
+      "cleanshot"
+      "codex"
+      "ghostty"
+      "obs"
+      "obsidian"
+      "aprilnea/tap/openlogi@latest" # tap-qualified (short name gets mis-removed)
+      "screen-studio"
+      "visual-studio-code"
+      "wispr-flow"
+
+      # Fonts
+      "font-anonymous-pro"
+      "font-geist"
+      "font-geist-mono"
+      "font-inter"
+      "font-meslo-lg-nerd-font"
+      "font-reenie-beanie"
+    ];
   };
 }

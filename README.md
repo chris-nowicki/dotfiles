@@ -136,24 +136,24 @@ which config you activate.
 
 ### Personal machine
 
+The config entry already exists — host **`Wixys-MacBook-Pro`**, user **`wix`** — so
+it's just bootstrap:
+
 ```sh
 # 1. Create the personal SSH key (default name on the personal Mac)
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 #    → add ~/.ssh/id_ed25519.pub to GitHub, then: ssh -T git@github.com
 
-# 2. Clone this repo over HTTPS (avoids the SSH chicken-and-egg)
-git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
+# 2. Clone the branch (until it's merged to main)
+git clone -b feat/nix-home-manager https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
 
-# 3. Add a config entry for this machine (see note below), then activate:
+# 3. First activation — additive (cleanup="none"), so it won't remove anything
 cd ~/Dotfiles
-sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#$(scutil --get LocalHostName)
+sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#Wixys-MacBook-Pro
 ```
 
-> [!IMPORTANT]
-> The personal machine needs its own `darwinConfigurations."<its-hostname>"`
-> entry in `flake.nix` that imports `home/hosts/personal.nix` (personal identity,
-> `~/.ssh/id_ed25519`, no work bits). Copy the work-laptop block, swap the host
-> module for `personal.nix`, and drop the work-only casks.
+The first switch adopts your already-installed apps and installs the shared ones
+you don't have yet (capcut, chatgpt, obsidian, openlogi, wispr-flow, some fonts).
 
 ### Work machine
 

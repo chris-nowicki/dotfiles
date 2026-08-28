@@ -1,5 +1,7 @@
 { ... }:
 {
+  home.homeDirectory = "/Users/wix";
+
   # Personal machine: single default-named key, no work identity.
   programs.ssh = {
     enable = true;

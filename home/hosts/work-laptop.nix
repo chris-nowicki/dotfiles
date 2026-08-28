@@ -1,5 +1,7 @@
 { ... }:
 {
+  home.homeDirectory = "/Users/chris.nowicki";
+
   # Work identity, scoped to ~/code/commerce/ (where work repos live).
   programs.git.includes = [
     {

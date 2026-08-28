@@ -5,8 +5,8 @@
     ../modules/git.nix
   ];
 
-  home.username = "chris.nowicki";
-  home.homeDirectory = "/Users/chris.nowicki";
+  # username is derived from the home-manager users key; homeDirectory is set
+  # per-host (usernames differ across machines).
 
   # Never bump this casually — it pins state-migration behavior.
   home.stateVersion = "25.05";
