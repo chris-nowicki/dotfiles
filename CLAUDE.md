@@ -90,8 +90,12 @@ during the transition** (their symlinks were removed with `stow -D`). Re-running
 - ✅ `zsh`, `git`, `ssh` → home-manager (branch `feat/nix-home-manager`).
 - ✅ CLI packages `pnpm`, `stow` → Nix (eza/gh/lazygit/zoxide/starship already in slice 1).
 - ✅ `ghostty` → home-manager (dumb symlink); `karabiner` removed (unused — Raycast).
-- ⬜ Homebrew module (nix-darwin) for casks + `mas`, and the CLI tools that stay
-  on brew (`mole` = tw93 Mac cleaner, `rulesync`); drop cruft (`omp`, `merve`).
+- ✅ nix-darwin added (`darwinConfigurations.C7Q95C63WW`): declarative Homebrew
+  (casks + brew-only CLI: corepack/mole/rulesync/vale), Touch ID sudo,
+  `nix.enable=false`. Activate: `sudo darwin-rebuild switch --flake .#C7Q95C63WW`.
+- ⬜ Flip `homebrew.onActivation.cleanup` to `"uninstall"` to drop the brew CLI
+  duplicates now provided by Nix (eza/gh/lazygit/starship/stow/zoxide/zsh-*).
+- ⬜ Fold home-manager into nix-darwin (single `darwin-rebuild switch`).
 - ⬜ Retire Stow entirely (migrate `streamdeck`); update `install.sh`.
 - ⬜ (Later) nix-darwin for macOS `defaults` (from the `~/Setup` repo), then archive `~/Setup`.
 

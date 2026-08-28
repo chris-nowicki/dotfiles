@@ -87,8 +87,13 @@
       # Prompt
       eval "$(starship init zsh)"
 
-      # Consolidated PATH additions (was two scattered exports in .zshrc)
-      export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+      # PATH: user bins first, then the Nix profiles ahead of everything else.
+      # nix-darwin sets up Nix paths in /etc, but brew shellenv (in .zprofile)
+      # prepends Homebrew afterward — so re-assert Nix precedence here, or brew
+      # copies shadow the Nix-managed tools. Covers standalone (~/.nix-profile)
+      # and nix-darwin-integrated (/etc/profiles/per-user) profile locations.
+      export PATH="$HOME/.local/bin:$HOME/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/run/current-system/sw/bin:$PATH"
+      typeset -U path PATH
 
       # Prune remote-tracking refs and delete local branches whose upstream is gone
       # Usage: gone            # safe delete (-d, refuses unmerged)
