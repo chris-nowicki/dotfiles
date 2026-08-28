@@ -1,52 +1,75 @@
-# My Dot Files
+# My Dotfiles
 
-This directory contains the dotfiles for my system
+Personal macOS configuration for two Macs (a work laptop and a personal machine),
+managed declaratively with **[nix-darwin](https://github.com/nix-darwin/nix-darwin)**
++ **[home-manager](https://github.com/nix-community/home-manager)** in one flake.
+
+One `darwin-rebuild switch` reproduces the whole setup: system settings,
+Homebrew apps, and dotfiles.
 
 ## Prerequisites
 
 > [!IMPORTANT]
-> Follow steps to setup a new mac [here](https://github.com/chris-nowicki/mac-setup) before continuing to install dotfiles below.
+> Follow the [mac-setup](https://github.com/chris-nowicki/mac-setup) guide first.
 
-### Stow
+- **Nix** via the [Determinate Systems installer](https://install.determinate.systems)
+  (flakes enabled by default):
+  ```sh
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  ```
 
-Ensure **GNU STOW** is installed
+## New-machine bootstrap
+
+1. `xcode-select --install`, then install Nix (above).
+2. Create a fresh SSH key (one per machine — never copy keys):
+   ```sh
+   ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal   # work laptop's personal key
+   # (personal machine uses ~/.ssh/id_ed25519; work laptop also has ~/.ssh/id_ed25519_bc)
+   ```
+   Add the `.pub` to GitHub, then `ssh -T git@github.com`.
+3. Clone this repo (HTTPS the first time to avoid the SSH chicken-and-egg):
+   ```sh
+   git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
+   ```
+4. Activate:
+   ```sh
+   cd ~/Dotfiles && ./install.sh          # or the explicit command below
+   sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake ~/Dotfiles#<LocalHostName>
+   ```
+
+## Daily use
 
 ```sh
-brew install stow
+# Apply changes (system + Homebrew + dotfiles) after editing any config:
+sudo darwin-rebuild switch --flake ~/Dotfiles#<LocalHostName>
+# or: ./install.sh
+
+# Roll back a bad switch:
+sudo darwin-rebuild switch --rollback
 ```
 
-## Installation
+`<LocalHostName>` = `scutil --get LocalHostName` (the work laptop is `C7Q95C63WW`).
 
-### Clone repo:
+## Structure
 
-```zsh
-# Use SSH (if set up)...
-git clone git@github.com:chris-nowicki/dotfiles.git ~/Dotfiles
-
-# ...or use HTTPS and switch remotes later.
-git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
+```
+flake.nix                  # inputs + darwinConfigurations (per machine)
+darwin/
+  common.nix               # nix settings, Touch ID sudo, Homebrew (casks/brews/taps)
+  hosts/work-laptop.nix     # this machine's apps + work-only bits
+home/
+  common.nix               # home-manager: packages + static config symlinks
+  hosts/work-laptop.nix     # work git email (~/code/commerce/), SSH keys, gcw/gcwm
+  hosts/personal.nix        # personal machine's identity/SSH (used once it's set up)
+modules/
+  zsh.nix  git.nix          # shell + git config
+starship/  ghostty/         # config files symlinked by home-manager
 ```
 
-### Use **GNU** stow to create symlinks:
+## Notes
 
-```zsh
-# Change to the Dotfiles directory
-cd ~/Dotfiles
-
-# run the Install script
-./install.sh
-```
-
-## Repository Structure
-
-This repository uses [GNU Stow](https://www.gnu.org/software/stow/) to manage dotfiles. Each directory represents a separate stow package that gets symlinked to your home directory.
-
-The repository includes a `.gitignore` file to prevent tracking of:
-- macOS system files (`.DS_Store`, etc.)
-- Auto-generated backup files (e.g., Karabiner automatic backups)
-- IDE configuration files
-
-## TODO List
-
-- [ ] Make a checklist of steps to decommission your computer before wiping your hard drive.
-- [ ] Create a [bootable USB installer for macOS](https://support.apple.com/en-us/HT201372).
+- **Node** is managed by `nvm` (not Nix); `brew shellenv` + nvm are preserved in
+  the login shell.
+- **SSH keys** are never managed by Nix (they're secrets) — only `~/.ssh/config`
+  is generated.
+- The personal machine still needs its own `darwinConfigurations` entry.

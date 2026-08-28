@@ -1,47 +1,26 @@
 #!/bin/zsh
 
-set -e  # Exit on error
+set -e # Exit on error
 
-echo "Installing dotfiles..."
+# Activate the nix-darwin + home-manager configuration for this machine.
+# Prereqs: Nix installed (Determinate), an SSH key created, this repo cloned.
+# See README.md for the full new-machine bootstrap.
 
-# Check if stow is installed
-if ! command -v stow &> /dev/null; then
-  echo "Error: GNU Stow is not installed."
-  echo "Install it with: brew install stow"
-  exit 1
-fi
+HOST="${1:-$(scutil --get LocalHostName)}"
+FLAKE="${HOME}/Dotfiles#${HOST}"
 
-# Packages to skip when stowing (add more names as needed)
-EXCLUDE=(streamdeck)
+echo "Activating config for host: ${HOST}"
 
-# Install dotfiles using stow
-for dir in */; do
-  # Skip if directory is empty or doesn't contain files
-  if [ -z "$(find "$dir" -type f ! -name '.DS_Store' 2>/dev/null)" ]; then
-    echo "Skipping empty directory: $dir"
-    continue
-  fi
-  
-  # Remove trailing slash for stow
-  dir_name="${dir%/}"
-  if (( ${EXCLUDE[(I)$dir_name]} )); then
-    echo "Skipping excluded: $dir_name"
-    continue
-  fi
-  echo "Stowing $dir_name..."
-  
-  if ! stow "$dir_name"; then
-    echo "Error: Failed to stow $dir_name"
-    exit 1
-  fi
-done
-
-# Check for .hushlogin file and create it if it doesn't exist
-if [ ! -f "$HOME/.hushlogin" ]; then
-  echo "Creating .hushlogin file..."
-  touch "$HOME/.hushlogin"
+if [ -e /run/current-system/sw/bin/darwin-rebuild ]; then
+  # nix-darwin already bootstrapped — normal switch.
+  sudo /run/current-system/sw/bin/darwin-rebuild switch --flake "$FLAKE"
 else
-  echo ".hushlogin file already exists."
+  # First run — bootstrap nix-darwin (installs darwin-rebuild).
+  echo "First run: bootstrapping nix-darwin..."
+  sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake "$FLAKE"
 fi
+
+# Suppress the login banner.
+[ -f "$HOME/.hushlogin" ] || touch "$HOME/.hushlogin"
 
 echo "Done!"
