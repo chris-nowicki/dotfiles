@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Quit Stream Deck if it’s running
+# Quit Stream Deck if it's running
 osascript -e 'tell application "Stream Deck" to quit'
 
 # Wait a bit
