@@ -26,7 +26,7 @@ alone is not done.
    ```
    Landed step: exits 0, no evaluation error, no warning you introduced.
 
-5. **Switch:** `./install.sh`. Watch the Homebrew step for an interactive
+5. **Switch:** `./switch.sh`. Watch the Homebrew step for an interactive
    `[y/n]` — if it wants to uninstall something unexpected, answer **no** and fix
    the manifest (see Gotchas).
 

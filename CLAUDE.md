@@ -40,7 +40,7 @@ home-manager is integrated as a nix-darwin module (`useGlobalPkgs`,
 ```bash
 # Apply everything (system + Homebrew + dotfiles) after editing any config:
 sudo darwin-rebuild switch --flake ~/Dotfiles#C7Q95C63WW
-# or: ./install.sh   (auto-detects host via scutil --get LocalHostName)
+# or: ./switch.sh   (auto-detects host via scutil --get LocalHostName)
 
 # Dry build (evaluate/compile without activating) — always do this first:
 nix build ~/Dotfiles#darwinConfigurations.C7Q95C63WW.system --no-link
@@ -105,6 +105,6 @@ Mono** (18), opacity 0.8, blur 10. Edit `ghostty/.config/ghostty/config`, then s
 
 - Repository location: `~/Dotfiles` (scripts assume this path).
 - New-machine bootstrap: Xcode CLT → Nix (Determinate installer) → `ssh-keygen` a
-  fresh per-machine key + add to GitHub → clone over HTTPS → `./install.sh`.
+  fresh per-machine key + add to GitHub → clone over HTTPS → `./switch.sh`.
   See README.md.
 - `.gitignore` prevents tracking `.DS_Store`, IDE dirs, and editor artifacts.

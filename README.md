@@ -66,7 +66,7 @@ modules/
   zsh.nix                    # aliases, history, plugins, PATH, brew+nvm, gone()
   git.nix                    # base (personal) git identity + settings
 starship/ ghostty/           # verbatim config files, symlinked by home-manager
-install.sh                   # thin wrapper → darwin-rebuild switch for this host
+switch.sh                    # thin wrapper → darwin-rebuild switch for this host
 ```
 
 > [!NOTE]
@@ -81,7 +81,7 @@ install.sh                   # thin wrapper → darwin-rebuild switch for this h
 # After editing any config, apply everything (system + apps + dotfiles):
 sudo darwin-rebuild switch --flake ~/Dotfiles#C7Q95C63WW
 # shortcut (auto-detects the host name):
-cd ~/Dotfiles && ./install.sh
+cd ~/Dotfiles && ./switch.sh
 
 # Preview a build without activating (do this first if unsure):
 nix build ~/Dotfiles#darwinConfigurations.C7Q95C63WW.system --no-link
@@ -101,7 +101,7 @@ sudo darwin-rebuild switch --rollback
 This repo ships an **`apply-config`** [skill](.claude/skills/apply-config/SKILL.md)
 for [Claude Code](https://claude.com/claude-code). Run Claude Code inside
 `~/Dotfiles`, ask for a config change, and it follows the safe loop automatically:
-**edit the source → dry-build → `./install.sh` → verify in a fresh shell → commit.**
+**edit the source → dry-build → `./switch.sh` → verify in a fresh shell → commit.**
 
 Just say what you want (or type `/apply-config`):
 
