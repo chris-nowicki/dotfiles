@@ -9,6 +9,7 @@
       user.name = "Chris Nowicki";
       user.email = "102450568+chris-nowicki@users.noreply.github.com";
 
+      core.editor = "vim"; # pin explicitly — don't rely on $EDITOR/$VISUAL/$GIT_EDITOR
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       credential.helper = "osxkeychain";
