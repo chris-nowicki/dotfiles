@@ -24,6 +24,7 @@ switch` applies system + apps + dotfiles together.
 - [How it works](#how-it-works)
 - [Repository structure](#repository-structure)
 - [Daily use](#daily-use)
+- [macOS preferences](#macos-preferences)
 - [Making changes with Claude](#making-changes-with-claude)
 - [New machine setup](#new-machine-setup)
   - [Personal machine](#personal-machine)
@@ -57,6 +58,7 @@ Each machine is a named **`darwinConfiguration`** keyed by its hostname
 flake.nix                    # inputs (nixpkgs, home-manager, nix-darwin) + darwinConfigurations
 darwin/
   common.nix                 # nix settings, Touch ID sudo, Homebrew engine, primaryUser
+  macos.nix                  # shared macOS preferences for both Macs
   hosts/work-laptop.nix      # this machine's casks / brews / taps
 home/
   common.nix                 # home.packages + static config symlinks (starship, ghostty)
@@ -95,6 +97,44 @@ sudo darwin-rebuild switch --rollback
 > Nix won't find them.
 
 ---
+
+## macOS preferences
+
+Both Macs import `darwin/macos.nix`. It manages 25 preferences for each host's
+`system.primaryUser`, using the old Setup guide reconciled with the personal
+Mac's preferences on September 16, 2026.
+
+| Area | Managed preferences |
+|------|---------------------|
+| Dock | Size 45, magnification on, minimize into app icon, auto-hide, no recent apps |
+| Desktop | Stage Manager off, click wallpaper to reveal desktop only in Stage Manager, group app windows together, desktop widgets enabled |
+| Finder | Show extensions, no extension-change warning, search current folder, open Home, show path/status/tab bars, hide drive/server/removable-media desktop icons |
+| Scrolling | Natural scrolling off |
+| Clock | Date when space allows, no weekday, show seconds, no flashing separators |
+
+Finder's tab bar uses `CustomUserPreferences`; the other settings use typed
+nix-darwin options. The four intentional differences from Setup are Dock size
+45 (was 36), magnification on, desktop widgets enabled, and date when space
+allows (was always).
+
+Edit the module, dry-build, then run `./switch.sh` as usual. Switching reapplies
+managed values, including preferences changed in System Settings since the last
+switch. Some changes may need a logout/login to appear; no custom restart hooks
+are installed. On a different macOS version, verify the visible behavior too.
+
+Removing an option stops managing it; it does **not** restore the old value.
+Likewise, rolling back to a generation that never managed a key does not remove
+that key. To restore an earlier state, use the recorded previous value, or
+`defaults delete <domain> <key>` for a previously absent key, after removing the
+corresponding option from Nix.
+
+These settings remain manual in System Settings (labels may vary by macOS version):
+
+- General → AutoFill & Passwords → turn off AutoFill Passwords and Passkeys.
+- Control Center → Spotlight → don't show in the menu bar.
+- Control Center → Siri → don't show in the menu bar.
+
+The old `~/Setup` repository remains available for its other setup instructions.
 
 ## Making changes with Claude
 
@@ -320,7 +360,7 @@ in `home/common.nix`.
 | Change terminal look | `ghostty/.config/ghostty/config` | `switch` |
 | Change git identity | `modules/git.nix` (personal) / `home/hosts/work-laptop.nix` (work) | `switch` |
 | Add an SSH host | `home/hosts/<host>.nix` (`programs.ssh.settings`) | `switch` |
-| A macOS default (later) | `darwin/common.nix` (`system.defaults`) | `switch` |
+| A macOS preference | `darwin/macos.nix` (`system.defaults`) | `switch`, then log out/in if needed |
 
 ---
 
@@ -334,13 +374,12 @@ in `home/common.nix`.
   re-asserts Nix ahead of Homebrew on PATH; open a fresh terminal.
 - **`switch` wants to uninstall an app / prompts `[y/n]`** — that's `cleanup`.
   It's `"none"` here; if you ever set it to `"uninstall"`, expect this.
-- **Roll back anything** — `sudo darwin-rebuild switch --rollback`.
+- **Roll back a generation** — `sudo darwin-rebuild switch --rollback`. Previously
+  unmanaged macOS preference keys need explicit restoration; see [macOS preferences](#macos-preferences).
 
 ---
 
 ## Remaining / roadmap
 
-- Port macOS `defaults` into nix-darwin `system.defaults` (from the old `~/Setup`
-  repo), then archive `~/Setup`.
-- Give the personal machine its own `darwinConfigurations` entry and factor the
-  shared cask list into `darwin/common.nix`.
+- Verify the shared macOS preferences on the work Mac when available.
+- Review the remaining instructions in `~/Setup` before archiving that repository.

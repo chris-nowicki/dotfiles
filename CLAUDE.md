@@ -12,9 +12,8 @@ One integrated config per machine: a single `sudo darwin-rebuild switch` applies
 system settings, Homebrew, and dotfiles together.
 
 - `C7Q95C63WW` (work laptop) — carries **both** personal (default) and work git
-  identities. The only host currently defined.
-- The personal machine will get its own `darwinConfigurations` entry that imports
-  `home/hosts/personal.nix`.
+  identities.
+- `Wixys-MacBook-Pro` (personal machine) — imports `home/hosts/personal.nix`.
 
 ## Structure
 
@@ -22,6 +21,7 @@ system settings, Homebrew, and dotfiles together.
 flake.nix                    # inputs + darwinConfigurations."<host>"
 darwin/
   common.nix                 # nix.enable=false, Touch ID sudo, Homebrew (casks/brews/taps), primaryUser
+  macos.nix                  # 25 shared macOS preferences, imported by common.nix
   hosts/work-laptop.nix      # this machine's casks + brew-only CLI
 home/
   common.nix                 # home-manager: home.packages, static config symlinks (starship, ghostty)
@@ -96,10 +96,16 @@ Mono** (18), opacity 0.8, blur 10. Edit `ghostty/.config/ghostty/config`, then s
 
 ## Remaining / not yet done
 
-- macOS `defaults` via nix-darwin `system.defaults` (port from the `~/Setup`
-  repo), then archive `~/Setup`.
-- Personal machine: add its `darwinConfigurations` entry; factor the shared cask
-  subset from `work-laptop` into `darwin/common.nix`.
+- Verify shared macOS preferences on the work Mac when available.
+- AutoFill Passwords and Passkeys, Spotlight menu-bar visibility, and Siri
+  menu-bar visibility remain manual; see README.md.
+- Review remaining `~/Setup` instructions before archiving it.
+
+macOS preferences live in `darwin/macos.nix` and are reapplied for each host's
+`system.primaryUser` on switch. Removing a key (or rolling back to a generation
+that never managed it) does not restore its old value. Preserve previous values
+and key absence before activation. Use a logout/login if the UI needs refreshing;
+do not add custom restart hooks.
 
 ## Notes
 

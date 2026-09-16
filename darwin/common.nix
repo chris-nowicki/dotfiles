@@ -1,5 +1,7 @@
 { ... }:
 {
+  imports = [ ./macos.nix ];
+
   # Determinate Nix owns the Nix installation + daemon — nix-darwin must NOT
   # try to manage them, or it fights Determinate. This is required on this setup.
   nix.enable = false;
