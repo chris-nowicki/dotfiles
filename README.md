@@ -1,385 +1,249 @@
 # My Dotfiles 🧊
 
-Personal **macOS** configuration for two Macs, managed declaratively with
-**[Nix](https://nixos.org)** — no more hand-installed apps, no config drift,
-reproducible on a fresh machine in one command.
+My Mac setup: apps, terminal configs, shell, Git, SSH config, and macOS preferences.
+Edit the files here, then run `./switch.sh` to apply them to this Mac.
 
-Built from three layers:
+- [Set up a new Mac](#set-up-a-new-mac)
+- [Change a config or preference](#change-a-config-or-preference)
+- [Add or remove software](#add-or-remove-software)
+- [Upgrade software](#upgrade-software)
+- [Bring changes to the other Mac](#bring-changes-to-the-other-mac)
+- [If something goes wrong](#if-something-goes-wrong)
 
-| Layer | Tool | Manages |
-|-------|------|---------|
-| 🖥️ **System** | [nix-darwin](https://github.com/nix-darwin/nix-darwin) | Homebrew apps, macOS settings, Touch ID sudo |
-| 🏠 **User** | [home-manager](https://github.com/nix-community/home-manager) | dotfiles, shell, git, ssh, CLI tools |
-| 📦 **Base** | [Nix flakes](https://nixos.wiki/wiki/Flakes) | pins every dependency to an exact version |
+## Set up a new Mac
 
-home-manager is folded **into** nix-darwin, so a single `sudo darwin-rebuild
-switch` applies system + apps + dotfiles together.
+These configurations target **Apple Silicon** Macs. Nix installs the configured
+software and settings; account sign-ins, private keys, app permissions, and
+personal files still need separate setup.
 
-> 💡 New to Nix? Open `~/Downloads/nix-setup-guide.html` for the visual explainer.
+### 1. Install the prerequisites
 
----
-
-## Table of Contents
-
-- [How it works](#how-it-works)
-- [Repository structure](#repository-structure)
-- [Daily use](#daily-use)
-- [macOS preferences](#macos-preferences)
-- [Making changes with Claude](#making-changes-with-claude)
-- [New machine setup](#new-machine-setup)
-  - [Personal machine](#personal-machine)
-  - [Work machine](#work-machine)
-- [Work scenarios (new job, new machine, email/host changes)](#work-scenarios)
-- [Identities & SSH keys](#identities--ssh-keys)
-- [Adding & removing apps (Homebrew)](#adding--removing-apps-homebrew)
-- [Common edits — where to change what](#common-edits--where-to-change-what)
-- [Troubleshooting](#troubleshooting)
-
----
-
-## How it works
-
-You **describe** the machine you want in Nix files; `darwin-rebuild switch`
-**makes the machine match**. Nothing is installed by clicking around — if it
-isn't in the config, it isn't on the machine (and vice-versa).
-
-- **Declarative** — the files are the source of truth.
-- **Reproducible** — the same config → the same machine, every time.
-- **Reversible** — every switch is a generation you can roll back to.
-
-Each machine is a named **`darwinConfiguration`** keyed by its hostname
-(`scutil --get LocalHostName`). The work laptop is `C7Q95C63WW`.
-
----
-
-## Repository structure
-
-```
-flake.nix                    # inputs (nixpkgs, home-manager, nix-darwin) + darwinConfigurations
-darwin/
-  common.nix                 # nix settings, Touch ID sudo, Homebrew engine, primaryUser
-  macos.nix                  # shared macOS preferences for both Macs
-  hosts/work-laptop.nix      # this machine's casks / brews / taps
-home/
-  common.nix                 # home.packages + static config symlinks (starship, ghostty)
-  hosts/work-laptop.nix      # work git email, SSH keys, work-only aliases (gcw/gcwm)
-  hosts/personal.nix         # personal identity/SSH (used once that machine exists)
-modules/
-  zsh.nix                    # aliases, history, plugins, PATH, brew+nvm, gone()
-  git.nix                    # base (personal) git identity + settings
-starship/ ghostty/           # verbatim config files, symlinked by home-manager
-switch.sh                    # thin wrapper → darwin-rebuild switch for this host
-```
-
-> [!NOTE]
-> **Node** is intentionally managed by `nvm`, not Nix. **SSH private keys** are
-> never in Nix (they're secrets) — only `~/.ssh/config` is generated.
-
----
-
-## Daily use
+In Terminal, install Apple's command line tools and wait for installation to finish:
 
 ```sh
-# After editing any config, apply everything (system + apps + dotfiles):
-sudo darwin-rebuild switch --flake ~/Dotfiles#C7Q95C63WW
-# shortcut (auto-detects the host name):
-cd ~/Dotfiles && ./switch.sh
-
-# Preview a build without activating (do this first if unsure):
-nix build ~/Dotfiles#darwinConfigurations.C7Q95C63WW.system --no-link
-
-# Undo the last switch:
-sudo darwin-rebuild switch --rollback
+xcode-select --install
 ```
 
-> [!TIP]
-> Flakes only see **git-tracked** files. `git add` new files before building or
-> Nix won't find them.
-
----
-
-## macOS preferences
-
-Both Macs import `darwin/macos.nix`. It manages 25 preferences for each host's
-`system.primaryUser`, using the old Setup guide reconciled with the personal
-Mac's preferences on September 16, 2026.
-
-| Area | Managed preferences |
-|------|---------------------|
-| Dock | Size 45, magnification on, minimize into app icon, auto-hide, no recent apps |
-| Desktop | Stage Manager off, click wallpaper to reveal desktop only in Stage Manager, group app windows together, desktop widgets enabled |
-| Finder | Show extensions, no extension-change warning, search current folder, open Home, show path/status/tab bars, hide drive/server/removable-media desktop icons |
-| Scrolling | Natural scrolling off |
-| Clock | Date when space allows, no weekday, show seconds, no flashing separators |
-
-Finder's tab bar uses `CustomUserPreferences`; the other settings use typed
-nix-darwin options. The four intentional differences from Setup are Dock size
-45 (was 36), magnification on, desktop widgets enabled, and date when space
-allows (was always).
-
-Edit the module, dry-build, then run `./switch.sh` as usual. Switching reapplies
-managed values, including preferences changed in System Settings since the last
-switch. Some changes may need a logout/login to appear; no custom restart hooks
-are installed. On a different macOS version, verify the visible behavior too.
-
-Removing an option stops managing it; it does **not** restore the old value.
-Likewise, rolling back to a generation that never managed a key does not remove
-that key. To restore an earlier state, use the recorded previous value, or
-`defaults delete <domain> <key>` for a previously absent key, after removing the
-corresponding option from Nix.
-
-These settings remain manual in System Settings (labels may vary by macOS version):
-
-- General → AutoFill & Passwords → turn off AutoFill Passwords and Passkeys.
-- Control Center → Spotlight → don't show in the menu bar.
-- Control Center → Siri → don't show in the menu bar.
-
-The old `~/Setup` repository remains available for its other setup instructions.
-
-## Making changes with Claude
-
-This repo ships an **`apply-config`** [skill](.claude/skills/apply-config/SKILL.md)
-for [Claude Code](https://claude.com/claude-code). Run Claude Code inside
-`~/Dotfiles`, ask for a config change, and it follows the safe loop automatically:
-**edit the source → dry-build → `./switch.sh` → verify in a fresh shell → commit.**
-
-Just say what you want (or type `/apply-config`):
-
-| You say… | It edits | and verifies |
-|---|---|---|
-| "add Slack to my apps" | `homebrew.casks` in `darwin/hosts/work-laptop.nix` | app installed in `/Applications` |
-| "bump my ghostty font size to 20" | `ghostty/.config/ghostty/config` | reload Ghostty (`Cmd+Shift+,`) |
-| "add an alias `k` for kubectl" | `shellAliases` in `modules/zsh.nix` | alias resolves in a fresh shell |
-| "add ripgrep as a CLI tool" | `home.packages` in `home/common.nix` (Nix, not brew) | `command -v rg` → Nix |
-| "change my work email to me@newco.com" | `programs.git.includes` in `home/hosts/work-laptop.nix` | `git config user.email` under `~/code/commerce/` |
-
-It handles the gotchas for you — dry-build before switching, tap-qualified casks,
-editing the repo source (not the read-only live symlink), and verifying the change
-took effect before calling it done.
-
----
-
-## New machine setup
-
-Same 4 steps for either machine. The only differences are the SSH key name and
-which config you activate.
-
-> [!NOTE]
-> **"How do I get the repo before SSH is set up?"** You don't need SSH for that.
-> This repo is **public**, so you `git clone` it over **HTTPS** — no key, no
-> login. SSH keys are only for *pushing* changes and for the generated
-> `~/.ssh/config`; the clone itself never touches them. So the order is:
-> **clone over HTTPS → create your key → `switch`.** Afterward, point the remote
-> at SSH so you can push:
-> `git remote set-url origin git@github.com:chris-nowicki/dotfiles.git`.
-
-### 0. Prerequisites (both)
-
-1. Run the [mac-setup](https://github.com/chris-nowicki/mac-setup) guide.
-2. `xcode-select --install`
-3. Install Nix (Determinate — flakes on by default):
-   ```sh
-   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-   ```
-   Then **open a new terminal**.
-
-### Personal machine
-
-The config entry already exists — host **`Wixys-MacBook-Pro`**, user **`wix`** — so
-it's just bootstrap:
+Install [Homebrew](https://docs.brew.sh/Installation), then follow its printed
+instructions to add `brew` to your shell:
 
 ```sh
-# 1. Create the personal SSH key (default name on the personal Mac)
-ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
-#    → add ~/.ssh/id_ed25519.pub to GitHub, then: ssh -T git@github.com
-
-# 2. Clone the branch (until it's merged to main)
-git clone -b feat/nix-home-manager https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
-
-# 3. First activation — additive (cleanup="none"), so it won't remove anything
-cd ~/Dotfiles
-sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#Wixys-MacBook-Pro
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-The first switch adopts your already-installed apps and installs the shared ones
-you don't have yet (capcut, chatgpt, obsidian, openlogi, wispr-flow, some fonts).
+Install [Determinate Nix](https://determinate.systems/install/) using its macOS
+installer. Open a new terminal and confirm `nix --version` and `brew --version`
+work. This repo expects Determinate to manage the Nix installation.
 
-### Work machine
+### 2. Clone this repo
+
+HTTPS works before SSH keys are configured:
 
 ```sh
-# 1. Create BOTH keys this machine uses
-ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal   # personal GitHub
-ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_bc         # work GitHub
-#    → add both .pub keys to their GitHub accounts; test:
-#    ssh -T git@github.com   and   ssh -T git@github-bc
-
-# 2. Clone (HTTPS first time)
 git clone https://github.com/chris-nowicki/dotfiles.git ~/Dotfiles
-
-# 3. Activate (first run bootstraps nix-darwin)
 cd ~/Dotfiles
-sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#$(scutil --get LocalHostName)
 ```
 
-If the new machine's hostname differs from `C7Q95C63WW`, see
-[Work scenarios → new machine](#new-work-machine).
+### 3. Match the configuration to the machine
 
----
+Check the machine name and account name:
 
-## Work scenarios
-
-Everything work-specific lives in **two files**:
-`home/hosts/work-laptop.nix` (identity + SSH) and
-`darwin/hosts/work-laptop.nix` (apps). Here's what to touch for each situation.
-
-### New job (same machine, new employer)
-
-You'll typically get a new email, a new git host, and new repos. Edit
-`home/hosts/work-laptop.nix`:
-
-1. **Work email** — in the `programs.git.includes` block:
-   ```nix
-   contents.user.email = "you@newcompany.com";
-   ```
-2. **Where work repos live** — change the include condition to the new folder:
-   ```nix
-   condition = "gitdir:~/code/newco/";
-   ```
-3. **New work SSH key**:
-   ```sh
-   ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_newco   # add .pub to their GitHub/GitLab
-   ```
-4. **New git host alias** — rename the `github-bc` block in `programs.ssh.settings`
-   (and point it at the new key). If the new employer uses GitLab/Bitbucket,
-   change `HostName` too:
-   ```nix
-   "git-newco" = {
-     HostName = "github.com";           # or gitlab.com, etc.
-     IdentityFile = "~/.ssh/id_ed25519_newco";
-     AddKeysToAgent = "yes"; IdentitiesOnly = "yes"; UseKeychain = "yes";
-   };
-   ```
-5. **Clone helpers** — the `gcw`/`gcwm` aliases rewrite `github.com` → `github-bc`;
-   update that `sed` pattern if your host alias changed.
-6. `sudo darwin-rebuild switch --flake .#C7Q95C63WW`
-
-> [!TIP]
-> Leave the old job's block in place if you still push to it; remove it once
-> you've fully moved. Nothing breaks by keeping an unused host alias.
-
-### New work machine
-
-1. Do the [Work machine](#work-machine) bootstrap (fresh keys, clone).
-2. In `flake.nix`, either **rename** the existing entry or **add** a new one for
-   the new hostname:
-   ```nix
-   darwinConfigurations."<NEW_HOSTNAME>" = nix-darwin.lib.darwinSystem {
-     modules = [ ./darwin/common.nix ./darwin/hosts/work-laptop.nix
-                 home-manager.darwinModules.home-manager
-                 { home-manager = { /* …same block… */
-                     users."chris.nowicki".imports =
-                       [ ./home/common.nix ./home/hosts/work-laptop.nix ]; }; } ];
-   };
-   ```
-   Get the hostname with `scutil --get LocalHostName`.
-3. If the new machine uses different app or key names, give it its own host files
-   under `darwin/hosts/` and `home/hosts/` instead of reusing `work-laptop.nix`.
-
-### Work email changes (rebrand / promotion)
-
-One line in `home/hosts/work-laptop.nix` → the `contents.user.email` in the
-`programs.git.includes` block → `sudo darwin-rebuild switch …`.
-
-### Machine ID (hostname) changes
-
-The `darwinConfigurations` key **must match** `scutil --get LocalHostName`, or
-`switch` errors with *"does not provide attribute … Did you mean …?"*.
-
-- **Fix:** rename the key in `flake.nix` to the new name, or just pass the new
-  name explicitly: `--flake .#<new-name>`.
-- **Prevent it:** pin the name so macOS can't drift it — add to `darwin/common.nix`:
-  ```nix
-  networking.hostName = "C7Q95C63WW";
-  networking.localHostName = "C7Q95C63WW";
-  ```
-
----
-
-## Identities & SSH keys
-
-| | Work laptop (`C7Q95C63WW`) | Personal machine |
-|---|---|---|
-| **Default git identity** | personal (noreply) | personal |
-| **Work identity** | `chris.nowicki@bigcommerce.com`, scoped to `~/code/commerce/` | — |
-| **Personal SSH key** | `~/.ssh/id_ed25519_personal` (→ `github.com`) | `~/.ssh/id_ed25519` (→ `github.com`) |
-| **Work SSH key** | `~/.ssh/id_ed25519_bc` (→ `github-bc`) | — |
-
-- Work repos are identified by **path** (`~/code/commerce/`), not machine — clone
-  work repos there and git uses the work email automatically.
-- Clone work repos via the host alias: `git clone git@github-bc:org/repo.git`
-  (or use the `gcw` alias: copy the `https://github.com/...` URL and run `gcw`).
-- **Keys are one-per-machine and never copied** — that's why the two Macs have
-  differently-named personal keys.
-
----
-
-## Adding & removing apps (Homebrew)
-
-nix-darwin drives Homebrew declaratively. Edit `darwin/hosts/work-laptop.nix`:
-
-```nix
-homebrew.casks = [ "raycast" "slack" /* … */ ];   # GUI apps + fonts
-homebrew.brews = [ "corepack" "vale" /* … */ ];   # brew-only CLI (most CLI → Nix instead)
-homebrew.taps  = [ "aprilnea/tap" ];              # third-party taps
+```sh
+scutil --get LocalHostName
+whoami
 ```
 
-Then `sudo darwin-rebuild switch …`.
+| Profile | Machine name | Account |
+|---------|--------------|---------|
+| Personal | `Wixys-MacBook-Pro` | `wix` |
+| Work | `C7Q95C63WW` | `chris.nowicki` |
 
-> [!WARNING]
-> `homebrew.onActivation.cleanup` is set to **`"none"`** (additive only) on
-> purpose. `"uninstall"` mis-handles **tap casks** (it once removed
-> `openlogi@latest`) and prompts mid-activation. To remove an app, delete it from
-> the list **and** run `brew uninstall <app>` yourself.
->
-> Casks from a custom tap must use the **full name**:
-> `"aprilnea/tap/openlogi@latest"`, and the tap must be in `homebrew.taps`.
+If both match an existing profile, continue to step 4. Otherwise, create a branch
+with `git switch -c feat/new-machine` and adjust the configuration first:
 
-CLI tools generally go to **Nix** instead of brew — add them to `home.packages`
-in `home/common.nix`.
+- In `flake.nix`, rename the matching machine entry if replacing that Mac, or copy
+  its `mkDarwin` entry if adding another Mac. Use the new machine name as its key.
+- If the account differs, update `user` in that entry, `system.primaryUser` and
+  `users.users.<account>.home` in its `darwin/hosts/` file, and
+  `home.homeDirectory` in its `home/hosts/` file.
+- When adding a Mac that needs different settings, copy the two host files and
+  point the new entry at them, preserving the existing Mac's configuration.
 
----
+Review the host's app list and, for work machines, the email, repository folder,
+SSH keys, and aliases in `home/hosts/work-laptop.nix` before applying it.
 
-## Common edits — where to change what
+### 4. Create this Mac's SSH keys
 
-| I want to… | Edit | Then |
-|---|---|---|
-| Add a shell alias | `modules/zsh.nix` (`shellAliases`) | `switch` |
-| Add a CLI tool | `home/common.nix` (`home.packages`) | `switch` |
-| Add / remove an app | `darwin/hosts/work-laptop.nix` (`homebrew.casks`) | `switch` |
-| Change the prompt | `starship/.config/starship.toml` | `switch` |
-| Change terminal look | `ghostty/.config/ghostty/config` | `switch` |
-| Change git identity | `modules/git.nix` (personal) / `home/hosts/work-laptop.nix` (work) | `switch` |
-| Add an SSH host | `home/hosts/<host>.nix` (`programs.ssh.settings`) | `switch` |
-| A macOS preference | `darwin/macos.nix` (`system.defaults`) | `switch`, then log out/in if needed |
+For a personal Mac:
 
----
+```sh
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
+```
 
-## Troubleshooting
+For a work Mac:
 
-- **`sudo: darwin-rebuild: command not found`** — sudo strips PATH. Use the full
-  path: `sudo /run/current-system/sw/bin/darwin-rebuild switch --flake …`.
-- **`does not provide attribute … darwinConfigurations.X`** — the flake key
-  doesn't match the hostname. See [hostname changes](#machine-id-hostname-changes).
-- **A CLI tool resolves to the brew copy, not Nix** — the zsh `initContent`
-  re-asserts Nix ahead of Homebrew on PATH; open a fresh terminal.
-- **`switch` wants to uninstall an app / prompts `[y/n]`** — that's `cleanup`.
-  It's `"none"` here; if you ever set it to `"uninstall"`, expect this.
-- **Roll back a generation** — `sudo darwin-rebuild switch --rollback`. Previously
-  unmanaged macOS preference keys need explicit restoration; see [macOS preferences](#macos-preferences).
+```sh
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_bc
+```
 
----
+Add each `.pub` key to its corresponding GitHub account. Keep private keys out of
+this repo. If restoring a machine with existing keys, don't overwrite them.
 
-## Remaining / roadmap
+### 5. Build and apply
 
-- Verify the shared macOS preferences on the work Mac when available.
-- Review the remaining instructions in `~/Setup` before archiving that repository.
+From `~/Dotfiles`, stage any new configuration files with `git add <file>` so Nix
+can see them. Then:
+
+```sh
+nix build ".#darwinConfigurations.$(scutil --get LocalHostName).system" --no-link
+./switch.sh
+```
+
+The first command checks the build without changing your active setup. The second
+asks for sudo authentication and applies everything, bootstrapping nix-darwin on
+first use. Homebrew itself must already be installed.
+
+Open a new terminal. Test `ssh -T git@github.com` and, on a work Mac,
+`ssh -T git@github-bc` now that the generated SSH config exists. GitHub should
+identify the correct account (its successful authentication message still exits
+with status 1). Enable pushing over SSH:
+
+```sh
+git remote set-url origin git@github.com:chris-nowicki/dotfiles.git
+```
+
+Commit any machine-specific changes on your feature branch and open a PR.
+
+### 6. Finish the manual setup
+
+- Sign into apps, activate licenses, restore your files, and grant requested app
+  permissions. Configure Raycast/AltTab shortcuts and other app-specific settings.
+- Install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) and the Node
+  versions your projects need; Node is not installed by this configuration.
+- Install any extra or App Store apps you still need; the old `~/Setup` guide
+  lists apps beyond those currently managed here.
+- In System Settings, turn off **AutoFill Passwords and Passkeys**, and hide
+  **Spotlight** and **Siri** from the menu bar. Labels vary by macOS version.
+- Check Dock, Finder, widgets, and the clock. Log out and back in if changes
+  haven't appeared.
+
+## Change a config or preference
+
+Start from an up-to-date `main` with a clean working tree, then create a branch:
+
+```sh
+cd ~/Dotfiles
+git switch main
+git pull --ff-only
+git switch -c chore/my-config-change
+```
+
+Edit the source file in this repo:
+
+| Change | File |
+|--------|------|
+| Ghostty font, theme, opacity | `ghostty/.config/ghostty/config` |
+| Starship prompt | `starship/.config/starship.toml` |
+| Shell aliases or behavior | `modules/zsh.nix` |
+| Dock, Finder, scrolling, desktop, clock | `darwin/macos.nix` |
+| Personal Git identity | `modules/git.nix` |
+| Work Git identity, SSH, clone aliases | `home/hosts/work-laptop.nix` |
+| Personal SSH config | `home/hosts/personal.nix` |
+
+**Edit the repo copy.** The live Ghostty and Starship files under `~/.config` are
+read-only links to the applied configuration.
+
+After editing, stage any newly created files with `git add <file>`, then:
+
+```sh
+nix build ".#darwinConfigurations.$(scutil --get LocalHostName).system" --no-link
+./switch.sh
+```
+
+Check the result before committing and opening a PR:
+
+- **Ghostty:** [reload with `Cmd+Shift+,`](https://ghostty.org/docs/config).
+- **Starship or shell:** open a new terminal.
+- **macOS preferences:** inspect the affected setting; log out/in if needed.
+
+Shared files affect both Macs when each runs `./switch.sh`. For a macOS preference
+on only one Mac, override it in `darwin/hosts/<host>.nix` using `lib.mkForce`
+(add `lib` to that module's arguments).
+
+Preferences changed directly in System Settings are overwritten on the next
+switch if Nix manages them. Removing an option stops managing it but leaves its
+last value in place; set your desired replacement explicitly.
+
+## Add or remove software
+
+Choose the appropriate list:
+
+| Software | File and list |
+|----------|---------------|
+| GUI apps or fonts on both Macs | `darwin/common.nix` → `homebrew.casks` |
+| GUI apps on just one Mac | `darwin/hosts/personal.nix` or `work-laptop.nix` → `homebrew.casks` |
+| Most command line tools | `home/common.nix` → `home.packages` |
+| Homebrew-only command line tools | Shared or host-specific `homebrew.brews` |
+
+**Add:** add the package to its list, then follow the build → switch → verify → PR
+workflow above. Homebrew casks/formulae are quoted strings; Nix packages use the
+package attribute name. Custom-tap packages need their tap in `homebrew.taps` and
+the full name, such as `"aprilnea/tap/openlogi@latest"`.
+
+**Remove a Nix tool:** remove it from `home.packages`, build, and switch. It leaves
+the active environment; another separately installed copy may still exist.
+
+**Remove a Homebrew app or tool:** remove it from every applicable list, build,
+and switch, then uninstall it on each Mac where it is no longer wanted:
+
+```sh
+brew uninstall --cask <app-name>
+# Or, for a command line tool:
+brew uninstall <formula-name>
+```
+
+Homebrew cleanup is intentionally disabled, so deleting a list entry alone does
+not uninstall software. Uninstalling without editing the list lets the next
+switch install it again.
+
+## Upgrade software
+
+Changing settings doesn't require upgrading packages.
+
+- **Homebrew:** run `brew update`, then `brew upgrade <name>` for a specific app
+  or tool (or `brew upgrade` for all eligible packages). Switching does not
+  automatically upgrade installed Homebrew packages.
+- **Nix tools/modules:** on a feature branch, run `nix flake update`, then build,
+  switch, and verify as above. Commit `flake.lock` with the update. This updates
+  all pinned inputs, including nix-darwin and home-manager.
+- **Node:** update separately through nvm.
+
+## Bring changes to the other Mac
+
+After the PR is merged, use a clean working tree on the other Mac:
+
+```sh
+cd ~/Dotfiles
+git switch main
+git pull --ff-only
+nix build ".#darwinConfigurations.$(scutil --get LocalHostName).system" --no-link
+./switch.sh
+```
+
+Only that Mac's profile is applied. Homebrew removals still need the manual
+uninstall step there too.
+
+## If something goes wrong
+
+- **Build fails:** fix the error before switching; the active setup is unchanged.
+- **Unknown hostname:** check the entries in `flake.nix`. You can explicitly
+  select one with `./switch.sh Wixys-MacBook-Pro`, but its account/home paths must
+  match the machine you're applying it to.
+- **A change causes problems:** revert the source change and switch again, or use
+  `sudo /run/current-system/sw/bin/darwin-rebuild switch --rollback` to return to
+  the previous generation. Homebrew changes are not undone by a Nix rollback.
+- **A macOS preference stays changed after rollback:** a generation that never
+  managed the key won't remove it. Restore its previous value, or use
+  `defaults delete <domain> <key>` if it was previously absent, and remove the
+  corresponding Nix option before switching again.
